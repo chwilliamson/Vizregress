@@ -13,18 +13,28 @@ namespace Williamson.VDD
     /// </summary>
     public class ImageComparer
     {
+        public const string IGNORE_COLOR = "FFFFD800";
+        
+        /// <summary>
+        /// The color that is used as the colour to ignore parts of the image
+        /// </summary>
         public string IgnoreColor
         {
             get;
             private set;
         }
+
+        /// <summary>
+        /// Default constructor using default colour <see cref="IGNORE_COLOR"/>
+        /// </summary>
         public ImageComparer()
-            : this("FFFFD800")
+            : this(IGNORE_COLOR)
         {           
         }
 
         public ImageComparer(string ignoreCode)
         {
+            if (ignoreCode == null) throw new ArgumentNullException("ignoreCode");
             if (ignoreCode.Length == 6) ignoreCode = "FF" + ignoreCode;
             this.IgnoreColor = ignoreCode;
         }
@@ -51,19 +61,18 @@ namespace Williamson.VDD
             // create template matching algorithm's instance
             // use zero similarity to make sure algorithm will provide anything
             var tm = new ExhaustiveTemplateMatching(0);
-            // compare two images
-            var org = new Bitmap(expected);
-            var act = new Bitmap(actual);
+            // convert to 24 bit
+            var org = new Bitmap(expected).To24bpp();
+            var act = new Bitmap(actual).To24bpp();
 
             //size check
             if (org.Size != act.Size) throw new ImagesAreNotSameSizeException();
-
             var orgData = org.LockBits(
                     new Rectangle( 0, 0, org.Width, org.Height ),
                     ImageLockMode.ReadWrite, org.PixelFormat );
             var actData = act.LockBits(
                    new Rectangle(0, 0, act.Width, act.Height),
-                   ImageLockMode.ReadWrite, org.PixelFormat);
+                   ImageLockMode.ReadWrite, act.PixelFormat);
             try
             {
                 var matchings = tm.ProcessImage(new UnmanagedImage(orgData), new UnmanagedImage(actData));
@@ -85,9 +94,10 @@ namespace Williamson.VDD
 
             return IsDifferenceTheEscapingColor(org,act,differenceImage);
         }
+        
 
         /// <summary>
-        /// 
+        /// Get a differences between two images and determines if the difference is within the ignored region.
         /// </summary>
         /// <param name="org"></param>
         /// <param name="act"></param>

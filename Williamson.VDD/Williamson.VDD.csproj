@@ -49,6 +49,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BitmapExtensionMethods.cs" />
     <Compile Include="ImageComparer.cs" />
     <Compile Include="ImagesAreNotSameSizeException.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

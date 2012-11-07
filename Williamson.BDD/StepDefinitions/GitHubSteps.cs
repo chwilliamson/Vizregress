@@ -13,7 +13,7 @@ using Williamson.VDD;
 namespace Williamson.BDD.StepDefinitions
 {
     [Binding]
-    public class GithubSteps
+    public class GitHubSteps
     {
         [Given(@"I visit github")]
         public void GivenIVisit()
@@ -24,8 +24,8 @@ namespace Williamson.BDD.StepDefinitions
             FeatureContext.Current.Set<IWebDriver>(cd);
         }
 
-        [Then(@"I close the browser")]
-        public void Close()
+        [AfterScenario]
+        public void CloseDriver()
         {
             FeatureContext.Current.Get<IWebDriver>().Close();
         }
