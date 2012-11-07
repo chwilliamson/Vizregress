@@ -11,7 +11,7 @@
 // ------------------------------------------------------------------------------
 #region Designer generated code
 #pragma warning disable
-namespace Williamsons.BDD.Features
+namespace Williamson.BDD.Features
 {
     using TechTalk.SpecFlow;
     
@@ -19,20 +19,20 @@ namespace Williamsons.BDD.Features
     [System.CodeDom.Compiler.GeneratedCodeAttribute("TechTalk.SpecFlow", "1.9.0.77")]
     [System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
     [NUnit.Framework.TestFixtureAttribute()]
-    [NUnit.Framework.DescriptionAttribute("Github")]
-    public partial class GithubFeature
+    [NUnit.Framework.DescriptionAttribute("Github allows people to store their source code")]
+    public partial class GithubAllowsPeopleToStoreTheirSourceCodeFeature
     {
         
         private static TechTalk.SpecFlow.ITestRunner testRunner;
         
-#line 1 "Beginning.feature"
+#line 1 "GitHub.feature"
 #line hidden
         
         [NUnit.Framework.TestFixtureSetUpAttribute()]
         public virtual void FeatureSetup()
         {
             testRunner = TechTalk.SpecFlow.TestRunnerManager.GetTestRunner();
-            TechTalk.SpecFlow.FeatureInfo featureInfo = new TechTalk.SpecFlow.FeatureInfo(new System.Globalization.CultureInfo("en-US"), "Github", "", ProgrammingLanguage.CSharp, ((string[])(null)));
+            TechTalk.SpecFlow.FeatureInfo featureInfo = new TechTalk.SpecFlow.FeatureInfo(new System.Globalization.CultureInfo("en-US"), "Github allows people to store their source code", "", ProgrammingLanguage.CSharp, ((string[])(null)));
             testRunner.OnFeatureStart(featureInfo);
         }
         
@@ -74,7 +74,7 @@ this.ScenarioSetup(scenarioInfo);
 #line 4
      testRunner.Given("I visit github", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line 5
-     testRunner.Then("the screen should look like", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+     testRunner.Then("the screen should look like GitHub.Home", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line 6
      testRunner.And("I close the browser", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden

@@ -7,7 +7,7 @@ using System.Text;
 using System.Threading.Tasks;
 using NUnit.Framework;
 
-namespace Williamson.TDD.Tests
+namespace Williamson.VDD.Tests
 {
     /// <summary>
     /// My fixture
@@ -15,9 +15,18 @@ namespace Williamson.TDD.Tests
     [TestFixture]
     public class ImageComparerFixture
     {
+        /// <summary>
+        /// Loads the test
+        /// </summary>
+        /// <param name="image"></param>
+        /// <param name="extension"></param>
+        /// <returns></returns>
         private Stream Load(string image, string extension = "png")
         {
-            return Assembly.GetExecutingAssembly().GetManifestResourceStream("Williamson.VDD.Tests.Images." + image + "." + extension);
+            var r = "Williamson.VDD.Tests.Images." + image + "." + extension;
+            var s =  Assembly.GetExecutingAssembly().GetManifestResourceStream(r);
+            if (s == null) Assert.Fail("Cannot load:" + r);
+            return s;
         }
         /// <summary>
         /// Performs a test to ensure both images match
@@ -29,6 +38,9 @@ namespace Williamson.TDD.Tests
         [TestCase("Google.Home", "Google.Home.SearchButtonMissingS", false, TestName = "Search Button Missing letter 'S'")]
         [TestCase("Google.Home", "Google.Home.SigninReducedSize", false, TestName = "Search Button Smaller")]
         [TestCase("Github.Home", "Github.Home", true, TestName = "Github same")]
+        [TestCase("Github.Home.IgnoreSections", "Github.Home.LineThroughStats", true, TestName = "Github same using transparent layers")]
+        [TestCase("Github.Home.IgnoreSections", "Github.Home.IgnoreSections", true, TestName = "Lines Through")]
+        [TestCase("Github.Home", "Github.TooSmall", false, TestName = "Images not same size", ExpectedException = typeof(ImagesAreNotSameSizeException))]        
         public void IsEqual(string src1, string src2, bool equal)
         {
             using (var s1 = this.Load(src1))
