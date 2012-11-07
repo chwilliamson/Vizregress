@@ -67,7 +67,7 @@ namespace Williamson.BDD.StepDefinitions
                     //now compare current with base
                     Assert.IsTrue(new ImageComparer().IsEqual(streamExpected, streamActual, (bm) => {
                         //save the diffences to manually inspect
-                        bm.Save(output.Replace("actual","expected"));
+                        bm.Save(output.Replace("actual","difference"));
                     }), "Images do not match");
                 }
                 

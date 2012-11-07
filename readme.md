@@ -28,4 +28,4 @@ It's likely some tests will fail since I'm basing them websites that are dynamic
 As I add loads of samples I will try to find something a bit more stable.
 
 ###Image Sizes
-You default browser size may differ from mine and therefore create failing tests.
+Your default browser size may differ from mine so you might have failing tests due to mismatching image sizes.
