@@ -66,7 +66,8 @@ namespace Williamson.VDD
             var act = new Bitmap(actual).To24bpp();
 
             //size check
-            if (org.Size != act.Size) throw new ImagesAreNotSameSizeException();
+            if (org.Size != act.Size) throw new ImagesAreNotSameSizeException(org,act);
+            
             var orgData = org.LockBits(
                     new Rectangle( 0, 0, org.Width, org.Height ),
                     ImageLockMode.ReadWrite, org.PixelFormat );

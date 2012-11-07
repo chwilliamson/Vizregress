@@ -1,12 +1,41 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace Williamson.VDD
 {
+    /// <summary>
+    /// Means that the images were not the same size
+    /// </summary>
     public class ImagesAreNotSameSizeException : ApplicationException
     {
+        public ImagesAreNotSameSizeException(Bitmap actual,Bitmap expected) : 
+            base("The images are not the same size. They should be the same size when you want to make a comparison.")
+        {
+            this.Actual = actual;
+            this.Expected = expected;
+            
+        }
+
+        /// <summary>
+        /// The Actual Image
+        /// </summary>
+        public Bitmap Actual
+        {
+            get;
+            private set;
+        }
+
+        /// <summary>
+        /// The Expected Image
+        /// </summary>
+        public Bitmap Expected
+        {
+            get;
+            private set;
+        }
     }
 }

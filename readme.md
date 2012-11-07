@@ -1,4 +1,4 @@
-#VDD my version of Visual Driven Development
+#VDD: my version of Visual Driven Development
 This is an experiment where I use TDD to develop coding units and behaviours by writing tests first.
 I use SpecFlow as my BDD tool to perform browser based integration tests against a fully deployed running system. 
 For me BDD sits strongly within the QA domain and maps nicely when documenting features and scenarios.
@@ -16,7 +16,8 @@ of the application that we can compare during a running test.
 
 ##Stuff to know
 ###Exclude regions
-You can add rgb regions/zones to indicate parts of the application you want to ignore.  The RGB region is configurable but defaults to FFFFD800.
+You can add rgb regions/zones to indicate parts of the application you want to ignore during image comparison.  
+The RGB region is configurable but defaults to FFFFD800.
 e.g. The colour FFD800 (like yellow) is the ignore zone.
 ![](https://raw.github.com/cwilliamson1980/Williamson.VDD/master/Williamson.VDD.Tests/Images/Github.Home.IgnoreSections.png?raw=true)
 
@@ -25,3 +26,6 @@ e.g. The colour FFD800 (like yellow) is the ignore zone.
 ###Fragile Tests
 It's likely some tests will fail since I'm basing them websites that are dynamically changing every day.  
 As I add loads of samples I will try to find something a bit more stable.
+
+###Image Sizes
+You default browser size may differ from mine and therefore create failing tests.

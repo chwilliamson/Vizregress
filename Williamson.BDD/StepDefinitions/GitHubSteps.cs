@@ -5,30 +5,46 @@ using System.IO;
 using System.Reflection;
 using NUnit.Framework;
 using OpenQA.Selenium;
-using OpenQA.Selenium.Chrome;
 using OpenQA.Selenium.Firefox;
 using TechTalk.SpecFlow;
 using Williamson.VDD;
 
 namespace Williamson.BDD.StepDefinitions
 {
+    /// <summary>
+    /// GutHub Step Definitions
+    /// </summary>
     [Binding]
     public class GitHubSteps
     {
-        [Given(@"I visit github")]
-        public void GivenIVisit()
+        /// <summary>
+        /// Share driver between scenarios to save time
+        /// </summary>
+        [BeforeFeature]
+        public static void CreateDriver()
         {
-            var cd = new FirefoxDriver();
-            cd.Navigate().GoToUrl("https://github.com/");
-
-            FeatureContext.Current.Set<IWebDriver>(cd);
+            var driver = new FirefoxDriver();
+            driver.Manage().Window.Size = new Size(994, 1014); //copying my size
+            FeatureContext.Current.Set<IWebDriver>(driver);
         }
 
-        [AfterScenario]
-        public void CloseDriver()
+        /// <summary>
+        /// Close the driver onces the feature is complete
+        /// </summary>
+        [AfterFeature]
+        public static void CloseDriver()
         {
             FeatureContext.Current.Get<IWebDriver>().Close();
         }
+
+        [Given(@"I visit github")]
+        public void GivenIVisit()
+        {
+            FeatureContext.Current.
+                Get<IWebDriver>().
+                Navigate().
+                GoToUrl("https://github.com/");            
+        }        
 
         [Then(@"the screen should look like (.*)")]
         public void LookLike(string name)
@@ -60,6 +76,14 @@ namespace Williamson.BDD.StepDefinitions
             {
                 Assert.Fail("Can't take a screenshot");
             }
+        }
+
+        [Then(@"the repository count should be greater than (.*)")]
+        public void ThenTheRepositoryCountShouldBeGreatThan(Decimal value)
+        {
+            var elements = FeatureContext.Current.Get<IWebDriver>().FindElements(By.CssSelector(".hero h1 strong"));
+            Assert.AreEqual(2, elements.Count);
+            Assert.Greater( Decimal.Parse(elements[1].Text),value);
         }
     }
 }
