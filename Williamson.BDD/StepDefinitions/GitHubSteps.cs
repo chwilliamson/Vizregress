@@ -17,66 +17,14 @@ namespace Williamson.BDD.StepDefinitions
     /// GutHub Step Definitions
     /// </summary>
     [Binding]
-    public class GitHubSteps
+    public class GitHubSteps : AbstractStepDefinitions
     {
-        /// <summary>
-        /// Share driver between scenarios to save time
-        /// </summary>
-        [BeforeFeature]
-        public static void CreateDriver()
-        {
-            var driver = new FirefoxDriver();
-            driver.Manage().Window.Size = new Size(994, 1014); //copying my size
-            FeatureContext.Current.Set<IWebDriver>(driver);
-        }
-
-        /// <summary>
-        /// Close the driver onces the feature is complete
-        /// </summary>
-        [AfterFeature]
-        public static void CloseDriver()
-        {
-            WebDriver.Close();
-        }
-
         [Given(@"I visit github")]
         public void GivenIVisit()
         {
             WebDriver.
                 Navigate().
                 GoToUrl("https://github.com/");            
-        }        
-
-        [Then(@"the screen should look like (.*)")]
-        public void LookLike(string name)
-        {
-            var driver = FeatureContext.Current.Get<IWebDriver>();
-            if (driver is ITakesScreenshot)
-            {
-                var s = ((ITakesScreenshot)driver).GetScreenshot();
-                var output = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, name + ".actual.png");
-                //save current shot in dir
-                s.SaveAsFile(
-                    output,
-                    ImageFormat.Png);
-                
-                //load base reference image
-                using (var streamExpected = Assembly.GetExecutingAssembly().GetManifestResourceStream("Williamson.BDD.Images." + name + ".png"))
-                using (var streamActual = File.OpenRead(output))
-                {
-                    if (streamExpected == null) Assert.Fail("No image: " + name);
-                    //now compare current with base
-                    Assert.IsTrue(new ImageComparer().IsEqual(streamExpected, streamActual, (bm) => {
-                        //save the diffences to manually inspect
-                        bm.Save(output.Replace("actual","difference"));
-                    }), "Images do not match");
-                }
-                
-            }
-            else
-            {
-                Assert.Fail("Can't take a screenshot");
-            }
         }
 
         [Then(@"the repository count should be greater than (.*)")]
@@ -105,13 +53,6 @@ namespace Williamson.BDD.StepDefinitions
             var header = WebDriver.FindElement(By.CssSelector(".pagehead h1"));
             Assert.AreEqual(title, header.Text);
         }
-
-        /// <summary>
-        /// Get access to feature context <see cref="IWebDriver"/>
-        /// </summary>
-        private static IWebDriver WebDriver
-        {
-            get { return FeatureContext.Current.Get<IWebDriver>(); }
-        }
+       
     }
 }

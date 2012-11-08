@@ -56,7 +56,14 @@
       <DependentUpon>GitHub.feature</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Browsers.cs" />
+    <Compile Include="StepDefinitions\AbstractStepDefinitions.cs" />
+    <Compile Include="StepDefinitions\CommonStepDefinitions.cs" />
     <Compile Include="StepDefinitions\GitHubSteps.cs" />
+    <Compile Include="IInformationalWebDriver.cs" />
+    <Compile Include="IWebDriverFactory.cs" />
+    <Compile Include="StepDefinitions\LookAndFeelSteps.cs" />
+    <Compile Include="WebDriverFactory.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
@@ -67,7 +74,7 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Images\GitHub\Pricing.png" />
+    <EmbeddedResource Include="Images\GitHub\FireFox\Pricing.png" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Williamson.VDD\Williamson.VDD.csproj">
@@ -76,7 +83,7 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Images\GitHub\Home.png" />
+    <EmbeddedResource Include="Images\GitHub\FireFox\Home.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
