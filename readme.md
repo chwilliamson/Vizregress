@@ -1,5 +1,5 @@
 #Visual Driven Development (VDD)?
-This my  project where I use TDD (Test Driver Development) to develop units of code and behaviors when writing tests first.  
+This is my project where I use TDD (Test Driver Development) to develop units of code and behaviors when writing tests first.  
 You'll see that *Williamson.VDD.Tests* performs tests against *Williamson.VDD*.
 
 I use [SpecFlow](http://www.specflow.org/) as my BDD (Behavior Driven Development) tool to perform browser based tests. 

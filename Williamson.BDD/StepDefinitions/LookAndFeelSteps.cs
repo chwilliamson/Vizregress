@@ -45,15 +45,16 @@ namespace Williamson.BDD.StepDefinitions
                 using (var streamExpected = Assembly.GetExecutingAssembly().GetManifestResourceStream(resource))
                 using (var streamActual = File.OpenRead(actualOutput))
                 {
-                    if (streamExpected == null) Assert.Fail("No image: " + name);
+                    if (streamExpected == null) Assert.Fail("No expected image: " + resource);
+                    if (streamActual == null) Assert.Fail("No actual image: " + actualOutput);
                     //save expected
                     new Bitmap(streamExpected).Save(expectedOutput);
                        
                     //now compare current with base
                     Assert.IsTrue(new ImageComparer().IsEqual(streamExpected, streamActual, (bm) =>
                     {
-                        //save the diffences to manually inspect later
-                         bm.Save(differenceOutput);
+                        //save the diffences to manually inspect later                        
+                        bm.Save(differenceOutput);
                     }), 
                     string.Format("Expected Image: {0}{3}But was: {1}{3}Difference: {2}", actualOutput,expectedOutput,differenceOutput, Environment.NewLine));
                 }

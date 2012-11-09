@@ -109,9 +109,6 @@ namespace Williamson.VDD
             //now get the differences and ensure the color isn't the escape color
             var difference = new Difference(org);
             var result = difference.Apply(act);
-            #if DEBUG
-            result.Save(Path.Combine(AppDomain.CurrentDomain.BaseDirectory , "diff.png"));
-            #endif
             if (differenceImage != null) differenceImage(result);
             //look at all pixels not black
             for (int x = 0; x < result.Width; x++)
