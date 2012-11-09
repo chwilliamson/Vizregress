@@ -18,14 +18,7 @@ namespace Williamson.BDD.Examples.StepDefinitions
     /// </summary>
     [Binding]
     public class GitHubSteps : AbstractStepDefinitions
-    {
-        [Given(@"I visit github")]
-        public void GivenIVisit()
-        {
-            WebDriver.
-                Navigate().
-                GoToUrl("https://github.com/");            
-        }
+    {       
 
         [Then(@"the repository count should be greater than (.*)")]
         public void ThenTheRepositoryCountShouldBeGreatThan(Decimal value)

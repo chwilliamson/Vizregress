@@ -6,6 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using OpenQA.Selenium;
 using TechTalk.SpecFlow;
+using Williamson.Example.Web;
 
 namespace Williamson.BDD.Examples.StepDefinitions
 {
@@ -30,6 +31,25 @@ namespace Williamson.BDD.Examples.StepDefinitions
         public static void CloseDriver()
         {
             WebDriver.Close();
-        }        
+        }
+
+        /// <summary>
+        /// Startup the self host
+        /// </summary>
+        [BeforeFeature("SelfHost")]
+        public static void StartSelfHost() {
+            var app = new App();
+            app.Start();
+            FeatureContext.Current.Set<App>(app);
+        }
+
+        /// <summary>
+        /// Shutdown SelfHost
+        /// </summary>
+        [AfterFeature("SelfHost")]
+        public static void StopSelfHost()
+        {
+            FeatureContext.Current.Get<App>().Stop();
+        }
     }
 }

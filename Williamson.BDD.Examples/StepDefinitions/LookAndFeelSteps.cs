@@ -40,7 +40,7 @@ namespace Williamson.BDD.Examples.StepDefinitions
                 //load base reference image
                 var split = name.Split('.');
                 //e.g. Williamson.BDD.Images.GitHub.FireFox.Home.png
-                var resource = "Williamson.BDD.Images." + split[0] + "." + InformationalWebDriver.Browser + "." + split[1] +".png";
+                var resource = "Williamson.BDD.Examples.Images." + split[0] + "." + InformationalWebDriver.Browser + "." + split[1] +".png";
                 //TODO: use locale
                 using (var streamExpected = Assembly.GetExecutingAssembly().GetManifestResourceStream(resource))
                 using (var streamActual = File.OpenRead(actualOutput))

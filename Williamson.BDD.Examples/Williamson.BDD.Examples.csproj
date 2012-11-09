@@ -50,6 +50,11 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Features\Basic.feature.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Basic.feature</DependentUpon>
+    </Compile>
     <Compile Include="Features\GitHub1.feature.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -58,7 +63,9 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Browsers.cs" />
     <Compile Include="StepDefinitions\AbstractStepDefinitions.cs" />
+    <Compile Include="StepDefinitions\BasicStepDefinitions.cs" />
     <Compile Include="StepDefinitions\CommonStepDefinitions.cs" />
+    <Compile Include="StepDefinitions\DriverDefinitions.cs" />
     <Compile Include="StepDefinitions\GitHubSteps.cs" />
     <Compile Include="IInformationalWebDriver.cs" />
     <Compile Include="IWebDriverFactory.cs" />
@@ -67,6 +74,10 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+    <None Include="Features\Basic.feature">
+      <Generator>SpecFlowSingleFileGenerator</Generator>
+      <LastGenOutput>Basic.feature.cs</LastGenOutput>
+    </None>
     <None Include="Features\GitHub.feature">
       <Generator>SpecFlowSingleFileGenerator</Generator>
       <LastGenOutput>GitHub1.feature.cs</LastGenOutput>
@@ -77,6 +88,10 @@
     <EmbeddedResource Include="Images\GitHub\FireFox_3_6_28\Pricing.png" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Williamson.Example.Web\Williamson.Example.Web.csproj">
+      <Project>{93b626c5-5fb9-46ac-8c18-44bbf0069557}</Project>
+      <Name>Williamson.Example.Web</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Williamson.VDD\Williamson.VDD.csproj">
       <Project>{ad9cc508-37f3-4365-b635-25ee81f82d0f}</Project>
       <Name>Williamson.VDD</Name>
