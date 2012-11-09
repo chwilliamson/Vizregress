@@ -8,6 +8,9 @@ using Williamson.Example.Web;
 
 namespace Williamson.BDD.Examples.StepDefinitions
 {
+    /// <summary>
+    /// Driver related step definitions
+    /// </summary>
     [Binding]
     public class DriverDefinitions : AbstractStepDefinitions
     {

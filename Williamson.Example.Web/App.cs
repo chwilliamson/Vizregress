@@ -32,7 +32,6 @@ namespace Williamson.Example.Web
                 Stop();
             }
         }
-
         public App Start()
         {
             Uri = new Uri("Http://localhost:8087");
@@ -50,6 +49,9 @@ namespace Williamson.Example.Web
             server.CloseAsync().Wait();
         }
 
+        /// <summary>
+        /// Very dumb handler to server content
+        /// </summary>
         public class MessageHandler : DelegatingHandler
         {
             private Uri baseUri;

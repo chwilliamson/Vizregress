@@ -92,6 +92,6 @@ This should allow us to spot subtle changes and act accordinally.
 #TODO
 
 ##Resource Fallback rules
-Decided how to fallback when a resource isn't found.
+Decide how to fallback when a resource isn't found.
 
 e.g. FireFox.en-GB.png may not eists so lets try FireFox.png.

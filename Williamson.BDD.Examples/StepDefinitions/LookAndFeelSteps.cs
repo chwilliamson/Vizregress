@@ -37,15 +37,11 @@ namespace Williamson.BDD.Examples.StepDefinitions
                     actualOutput,
                     ImageFormat.Png);                
 
-                //load base reference image
-                var split = name.Split('.');
-                //e.g. Williamson.BDD.Images.GitHub.FireFox.Home.png
-                var resource = "Williamson.BDD.Examples.Images." + split[0] + "." + InformationalWebDriver.Browser + "." + split[1] +".png";
-                //TODO: use locale
-                using (var streamExpected = Assembly.GetExecutingAssembly().GetManifestResourceStream(resource))
+                //TODO: DI
+                var resolver = new ExpectedResourceResolver();
+                using (var streamExpected = resolver.Resolve(name,InformationalWebDriver))
                 using (var streamActual = File.OpenRead(actualOutput))
                 {
-                    if (streamExpected == null) Assert.Fail("No expected image: " + resource);
                     if (streamActual == null) Assert.Fail("No actual image: " + actualOutput);
                     //save expected
                     new Bitmap(streamExpected).Save(expectedOutput);

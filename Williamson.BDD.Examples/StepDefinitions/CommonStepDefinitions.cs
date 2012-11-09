@@ -10,6 +10,9 @@ using Williamson.Example.Web;
 
 namespace Williamson.BDD.Examples.StepDefinitions
 {
+    /// <summary>
+    /// Step definitions that are common across everything
+    /// </summary>
     [Binding]
     public class CommonStepDefinitions : AbstractStepDefinitions
     {

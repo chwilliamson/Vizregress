@@ -50,6 +50,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ExpectedResourceResolver.cs" />
     <Compile Include="Features\Basic.feature.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
