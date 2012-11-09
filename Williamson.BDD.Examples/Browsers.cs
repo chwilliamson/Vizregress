@@ -1,5 +1,4 @@
-﻿
-namespace Williamson.BDD
+﻿namespace Williamson.BDD.Examples
 {
     /// <summary>
     /// A list of test browsers

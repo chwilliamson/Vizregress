@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Williamson.BDD
+namespace Williamson.BDD.Examples
 {
     /// <summary>
     /// A factory interface for creating <see cref="IInformationalWebDriver"/>

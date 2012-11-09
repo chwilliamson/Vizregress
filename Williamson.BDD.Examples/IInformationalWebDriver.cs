@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using OpenQA.Selenium;
 
-namespace Williamson.BDD
+namespace Williamson.BDD.Examples
 {
     /// <summary>
     /// An extention to <see cref="IWebDriver"/> that adds addition information

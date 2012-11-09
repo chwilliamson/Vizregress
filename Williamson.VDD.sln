@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2012
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Williamson.VDD.Tests", "Williamson.VDD.Tests\Williamson.VDD.Tests.csproj", "{7D55024E-8490-4590-BE05-CC2206424CB2}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Williamson.BDD", "Williamson.BDD\Williamson.BDD.csproj", "{7BFAEE49-3300-439E-8970-2EBC90DDA434}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Williamson.BDD.Examples", "Williamson.BDD.Examples\Williamson.BDD.Examples.csproj", "{7BFAEE49-3300-439E-8970-2EBC90DDA434}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Williamson.VDD", "Williamson.VDD\Williamson.VDD.csproj", "{AD9CC508-37F3-4365-B635-25EE81F82D0F}"
 EndProject
@@ -12,7 +12,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 		readme.md = readme.md
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Williamson.BDD.Tests", "Williamson.BDD.Tests\Williamson.BDD.Tests.csproj", "{4F54ED79-1ACA-4877-A136-8864D46DBB3F}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Williamson.BDD.Examples.Tests", "Williamson.BDD.Examples.Tests\Williamson.BDD.Examples.Tests.csproj", "{4F54ED79-1ACA-4877-A136-8864D46DBB3F}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

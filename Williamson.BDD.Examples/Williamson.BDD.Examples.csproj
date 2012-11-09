@@ -7,8 +7,8 @@
     <ProjectGuid>{7BFAEE49-3300-439E-8970-2EBC90DDA434}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Williamson.BDD</RootNamespace>
-    <AssemblyName>Williamson.BDD</AssemblyName>
+    <RootNamespace>Williamson.BDD.Examples</RootNamespace>
+    <AssemblyName>Williamson.BDD.Examples</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>

@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Firefox;
 
-namespace Williamson.BDD
+namespace Williamson.BDD.Examples
 {
     /// <summary>
     /// A factory for constructing <see cref="IInformationalWebDriver"/>

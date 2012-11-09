@@ -8,7 +8,7 @@ using OpenQA.Selenium;
 using TechTalk.SpecFlow;
 using Williamson.VDD;
 
-namespace Williamson.BDD.StepDefinitions
+namespace Williamson.BDD.Examples.StepDefinitions
 {
     /// <summary>
     /// Look and feel step definitions

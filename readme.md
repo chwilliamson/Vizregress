@@ -1,4 +1,6 @@
-#Visual Driven Development (VDD)?
+#Visual Driven Development (VDD)
+Spot visual regression in your web application by comparing screenshots against a approved set of approved screenshots.
+
 This is my project where I use TDD (Test Driver Development) to develop units of code and behaviors when writing tests first.  
 You'll see that *Williamson.VDD.Tests* performs tests against *Williamson.VDD*.
 
@@ -28,11 +30,13 @@ Contains the core image utilies based on [AForge.Net Framework](http://code.goog
 ##Williamson.VDD.Tests
 Contains tests for *Williamson.VDD* using NUnit.
 
-##Williamson.BDD
-Contains sample selenium tests using the WebDriver to assert DOM properties.  
+##Williamson.BDD.Examples
+Contains example selenium tests using the WebDriver to assert DOM properties.  
 It also takes screenshots and compares with some base embedded resources.
 
 I have used SpecFlow to create features so you'll need to download the SpecFlow with NUnit extension to run them.
+
+Take this project and modify, make your own and grow :)  It's mean't to be your starting point.
 
 ##Stuff to know
 
@@ -40,9 +44,9 @@ I have used SpecFlow to create features so you'll need to download the SpecFlow 
 Images are currently stored as embedded resources at *Williamson.BDD.Images* and structured using the following naming convention:
 
 * Site name (e.g GitHub)
-** Browser (e.g. FireFox)
-*** Page.png
-*** Page.en-GB.png
+  * Browser (e.g. FireFox)
+   * Page.png
+   * Page.en-GB.png
 
 If a page variant Page.en-US.png isn't found then it'll fall fack to Page.png.
 
@@ -56,6 +60,7 @@ The stats can be testing using the selenium web driver.
 ![](https://raw.github.com/cwilliamson1980/Williamson.VDD/master/Williamson.VDD.Tests/Images/Github.Home.IgnoreSections.png?raw=true)
 
 ###Images currently have to be saved as png files
+This is the way it is for the moment.
 
 ###Fragile Tests
 It's likely some tests will fail since I'm basing them on websites that are dynamically changing every day.  
@@ -65,8 +70,16 @@ As I add loads of samples I will try to find something a bit more stable and may
 Your default browser size may differ from mine so you might have failing tests due to mismatching image sizes.
 I'm using FireFox 3.6.28 so it's possible later versions might render things differently.
 
-###Actual Images are exported on failure
-If a failure occurs the actual image is written to the executing domain base directory with naming convention of *foo.actual.png*.  
+###Images are exported on failure
+If a failure occurs the actual image is written to the executing domain base directory with naming convention of *foo.actual.png*, *foo.expected.png* and *foo.difference.png*.  
+These paths should be detailed in the asserting like:
+
+Expected Image: foo.expected.png
+But was: foo.actual.png
+Difference:foo.difference.png
+
+*foo.difference.png* will give you an idea of which zones to check. You could try inverting the image to see if it's clearer.
+
 You can then update the relavent resources in */Williamson.BDD/Images/GitHub/* to get your tests running.
 
 #My Notes
@@ -75,3 +88,10 @@ Images are captured after the development process to help spot regression. I'll 
 
 QA will create/update set of accepted images which will be compared against in future tests.  
 This should allow us to spot subtle changes and act accordinally.
+
+#TODO
+
+##Resource Fallback rules
+Decided how to fallback when a resource isn't found.
+
+e.g. FireFox.en-GB.png may not eists so lets try FireFox.png.

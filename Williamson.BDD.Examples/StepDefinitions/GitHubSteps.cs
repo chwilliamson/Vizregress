@@ -11,7 +11,7 @@ using OpenQA.Selenium.Firefox;
 using TechTalk.SpecFlow;
 using Williamson.VDD;
 
-namespace Williamson.BDD.StepDefinitions
+namespace Williamson.BDD.Examples.StepDefinitions
 {
     /// <summary>
     /// GutHub Step Definitions

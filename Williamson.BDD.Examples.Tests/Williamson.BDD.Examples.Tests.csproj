@@ -7,8 +7,8 @@
     <ProjectGuid>{4F54ED79-1ACA-4877-A136-8864D46DBB3F}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Williamson.BDD.Tests</RootNamespace>
-    <AssemblyName>Williamson.BDD.Tests</AssemblyName>
+    <RootNamespace>Williamson.BDD.Examples.Tests</RootNamespace>
+    <AssemblyName>Williamson.BDD.Examples.Tests</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -40,6 +40,12 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Williamson.BDD.Examples\Williamson.BDD.Examples.csproj">
+      <Project>{7bfaee49-3300-439e-8970-2ebc90dda434}</Project>
+      <Name>Williamson.BDD.Examples</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

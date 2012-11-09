@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using OpenQA.Selenium;
 using TechTalk.SpecFlow;
 
-namespace Williamson.BDD.StepDefinitions
+namespace Williamson.BDD.Examples.StepDefinitions
 {
     public class AbstractStepDefinitions
     {
