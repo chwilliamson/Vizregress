@@ -31,12 +31,18 @@ Contains the core image utilies based on [AForge.Net Framework](http://code.goog
 Contains tests for *Williamson.VDD* using NUnit.
 
 ##Williamson.BDD.Examples
-Contains example selenium tests using the WebDriver to assert DOM properties.  
+Contains example Selenium tests using the WebDriver to assert DOM properties.  
 It also takes screenshots and compares with some base embedded resources.
 
 I have used SpecFlow to create features so you'll need to download the SpecFlow with NUnit extension to run them.
 
 Take this project and modify, make your own and grow :)  It's mean't to be your starting point.
+
+##Williamson.BDD.Examples.Tests
+Contains tests for *Williamson.BDD.Examples* using NUnit
+
+##Williamson.Example.Web
+A SelfHosted web example used by the selenium tests.
 
 ##Stuff to know
 
@@ -56,8 +62,9 @@ You can add regions/zones to indicate parts of the application you want to ignor
 The RGB region is configurable but defaults to FFFFD800.
 
 e.g. The colour FFD800 (like yellow) is the ignore zone. The zone below ignores the github stats bar. 
-The stats can be testing using the selenium web driver.
 ![](https://raw.github.com/cwilliamson1980/Williamson.VDD/master/Williamson.VDD.Tests/Images/Github.Home.IgnoreSections.png?raw=true)
+
+The stats can be tested using the [Selenium Web Driver](http://seleniumhq.org/).
 
 ###Images currently have to be saved as png files
 This is the way it is for the moment.

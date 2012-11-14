@@ -13,11 +13,18 @@ using System.Net;
 using System.Threading;
 using System.Reflection;
 using System.IO;
+using Williamson.Example.Web.MessageHandlers;
 
 namespace Williamson.Example.Web
 {
     public class App
     {
+        static void Main(string[] args) {
+            var app = new App().Start();
+            Console.WriteLine("Thanks for running my app.  Please visit {0} to start.",app.Uri);
+            Console.ReadLine();
+            app.Stop();
+        }
         public Uri Uri { get; set; }
         HttpSelfHostServer server;
         public void StartAndAction(Action<Uri> doWithUri)
@@ -38,7 +45,7 @@ namespace Williamson.Example.Web
             var config = new HttpSelfHostConfiguration(Uri);
             server = new HttpSelfHostServer(config);
 
-            config.MessageHandlers.Add(new MessageHandler(Uri));
+            config.MessageHandlers.Add(new StaticContentResourceMessageHandler(Uri));
             server.OpenAsync().Wait();
 
             return this;
@@ -48,39 +55,6 @@ namespace Williamson.Example.Web
         {
             server.CloseAsync().Wait();
         }
-
-        /// <summary>
-        /// Very dumb handler to server content
-        /// </summary>
-        public class MessageHandler : DelegatingHandler
-        {
-            private Uri baseUri;
-            public MessageHandler(Uri baseUri)
-            {
-                this.baseUri = baseUri;
-            }
-            protected override Task<HttpResponseMessage> SendAsync(
-                HttpRequestMessage request, CancellationToken cancellationToken)
-            {
-                var file = request.RequestUri.LocalPath.Substring(1).ToLowerInvariant();
-                // Create the response. 
-                using (var s = Assembly.GetExecutingAssembly().GetManifestResourceStream("Williamson.Example.Web.Content." + file + ".html"))
-                using(StreamReader sr = new StreamReader(s))
-                {
-                    var response = new HttpResponseMessage(HttpStatusCode.OK)
-                    {
-                        
-                        Content = new StringContent(sr.ReadToEnd())
-                    };
-
-                    response.Content.Headers.ContentType.CharSet = "UTF-8";
-                    response.Content.Headers.ContentType.MediaType = "text/html"; 
-
-                    var tsc = new TaskCompletionSource<HttpResponseMessage>();
-                    tsc.SetResult(response);
-                    return tsc.Task;
-                }                
-            }
-        }
+        
     }
 }
