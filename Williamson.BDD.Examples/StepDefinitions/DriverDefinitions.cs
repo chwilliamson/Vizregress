@@ -18,14 +18,15 @@ namespace Williamson.BDD.Examples.StepDefinitions
         public void GivenIVisit(string name)
         {
             var url = "https://github.com/";
-            if (!name.Equals("github", StringComparison.OrdinalIgnoreCase))
+            if (name.Equals("Example", StringComparison.OrdinalIgnoreCase))
             {
-                url = FeatureContext.Current.Get<App>().Uri.ToString() + "/" + name;
+                url = FeatureContext.Current.Get<App>().Uri.ToString() + "/";
             }
             WebDriver.
                 Navigate().
                 GoToUrl(url);
         }
+
         [Then("the page title should be (.*)")]
         public void Title(string title)
         {

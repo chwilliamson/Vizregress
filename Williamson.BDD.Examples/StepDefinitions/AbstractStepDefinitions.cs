@@ -8,7 +8,10 @@ using TechTalk.SpecFlow;
 
 namespace Williamson.BDD.Examples.StepDefinitions
 {
-    public class AbstractStepDefinitions
+    /// <summary>
+    /// Definitions shared with subclasses
+    /// </summary>
+    public abstract class AbstractStepDefinitions
     {
         /// <summary>
         /// Get access to feature context <see cref="IWebDriver"/>
@@ -18,6 +21,9 @@ namespace Williamson.BDD.Examples.StepDefinitions
             get { return FeatureContext.Current.Get<IInformationalWebDriver>(); }
         }
 
+        /// <summary>
+        /// The underlying web driver
+        /// </summary>
         protected static IWebDriver WebDriver
         {
             get { return InformationalWebDriver.WebDriver; }

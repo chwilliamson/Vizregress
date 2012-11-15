@@ -156,8 +156,8 @@
     <EmbeddedResource Include="Content\JavaScript\jquery-ui-1.9.1.custom.min.js">
       <DependentUpon>jquery-ui-1.9.1.custom.js</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Content\JavaScript\underscore.js" />
     <EmbeddedResource Include="Content\Css\bootstrap.css" />
+    <EmbeddedResource Include="Content\JavaScript\knockout.js" />
     <Content Include="packages.config" />
   </ItemGroup>
   <PropertyGroup>

@@ -16,8 +16,8 @@ namespace Williamson.Example.Web.MessageHandlers
     /// </summary>
     public class StaticContentResourceMessageHandler: DelegatingHandler
     {
-        private Uri baseUri;
-            
+        private Uri baseUri;        
+
         public StaticContentResourceMessageHandler(Uri baseUri)
         {
             this.baseUri = baseUri;
@@ -64,18 +64,30 @@ namespace Williamson.Example.Web.MessageHandlers
             return response;
         }
 
-
+        /// <summary>
+        /// Serve the css as one big file
+        /// </summary>
+        /// <returns></returns>
         protected string Css()
         {
             return CombineStreams(CONTENT + ".Css","css", "jquery-ui-1.9.1","bootstrap");
         }
 
-
+        /// <summary>
+        /// Serve the JavaScript as one big file
+        /// </summary>
+        /// <returns></returns>
         protected string Js()
         {
-            return CombineStreams(CONTENT + ".JavaScript", "js", "jquery-1.8.2", "jquery-ui-1.9.1.custom","underscore","application");
+            return CombineStreams(CONTENT + ".JavaScript", "js", "jquery-1.8.2", "jquery-ui-1.9.1.custom","knockout","application");
         }
 
+        /// <summary>
+        /// Server a file
+        /// </summary>
+        /// <param name="file"></param>
+        /// <param name="mediaType"></param>
+        /// <returns></returns>
         protected HttpResponseMessage File(string file, string mediaType)
         {            
             using (var s = Assembly
@@ -83,9 +95,9 @@ namespace Williamson.Example.Web.MessageHandlers
                .GetManifestResourceStream(file))
             using (var br = new BinaryReader(s))
             {
+                if (s.Length > Int32.MaxValue) throw new ApplicationException("Too Big");
                 var response = new HttpResponseMessage(HttpStatusCode.OK)
                 {
-                    //TODO: remove cast
                     Content = new ByteArrayContent(br.ReadBytes((int)s.Length))
                 };
 
@@ -95,7 +107,13 @@ namespace Williamson.Example.Web.MessageHandlers
            
         }
 
-
+        /// <summary>
+        /// Combine the streames
+        /// </summary>
+        /// <param name="prefix"></param>
+        /// <param name="suffix"></param>
+        /// <param name="fullnames"></param>
+        /// <returns></returns>
         protected string CombineStreams(string prefix,string suffix, params string[] fullnames)
         {
             StringBuilder sb = new StringBuilder();
@@ -108,7 +126,7 @@ namespace Williamson.Example.Web.MessageHandlers
                 .GetManifestResourceStream(src))
                 {
                     if (s == null) 
-                        throw new ApplicationException("no: " +s);
+                        throw new ApplicationException("Resource not found: " + src);
                     using (StreamReader sr = new StreamReader(s))
                     {
                         sb.AppendLine(sr.ReadToEnd());
@@ -116,7 +134,6 @@ namespace Williamson.Example.Web.MessageHandlers
                 }
             }
             return sb.ToString();
-        }
-       
+        }       
     }
 }

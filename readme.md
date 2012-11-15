@@ -42,7 +42,15 @@ Take this project and modify, make your own and grow :)  It's mean't to be your 
 Contains tests for *Williamson.BDD.Examples* using NUnit
 
 ##Williamson.Example.Web
-A SelfHosted web example used by the selenium tests.
+A SelfHosted web example used by the selenium tests.  It's an ASP.NET Web API SelfHost and I added a custom MessageHandler to serve so content for testing.
+All content is embedded within the assembly.
+
+The following frameworks are used:
+
+* ASP.NET Web API
+* Knockoutjs
+* jQuery
+* jQueryUI
 
 ##Stuff to know
 
