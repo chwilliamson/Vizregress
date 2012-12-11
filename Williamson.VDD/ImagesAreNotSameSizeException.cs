@@ -13,7 +13,9 @@ namespace Williamson.VDD
     public class ImagesAreNotSameSizeException : ApplicationException
     {
         public ImagesAreNotSameSizeException(Bitmap actual,Bitmap expected) : 
-            base("The images are not the same size. They should be the same size when you want to make a comparison.")
+            base(
+            string.Format("The images are not the same size. They should be the same size when you want to make a comparison. Expected: {0}, Actual: {1}",
+            expected.Size,actual.Size))
         {
             this.Actual = actual;
             this.Expected = expected;

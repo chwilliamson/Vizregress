@@ -4,7 +4,7 @@ Spot visual regression in your web application by comparing screenshots against 
 This is my project where I use TDD (Test Driver Development) to develop units of code and behaviors when writing tests first.  
 You'll see that *Williamson.VDD.Tests* performs tests against *Williamson.VDD*.
 
-I use [SpecFlow](http://www.specflow.org/) as my BDD (Behavior Driven Development) tool to perform browser based tests. 
+I use [SpecFlow](http://www.specflow.org/) as my BDD (Behaviour Driven Development) tool to perform browser based tests. 
 For me BDD sits strongly within the QA domain and maps nicely when documenting features and scenarios.
 
 ##About
@@ -36,7 +36,7 @@ It also takes screenshots and compares with some base embedded resources.
 
 I have used SpecFlow to create features so you'll need to download the SpecFlow with NUnit extension to run them.
 
-Take this project and modify, make your own and grow :)  It's mean't to be your starting point.
+Take this project and modify, make your own and grow :)  It's meant to be your starting point.
 
 ##Williamson.BDD.Examples.Tests
 Contains tests for *Williamson.BDD.Examples* using NUnit
@@ -62,7 +62,7 @@ Images are currently stored as embedded resources at *Williamson.BDD.Images* and
    * Page.png
    * Page.en-GB.png
 
-If a page variant Page.en-US.png isn't found then it'll fall fack to Page.png.
+If a page variant Page.en-US.png isn't found then it'll fall back to Page.png.
 
 
 ###Exclude regions/zones 
@@ -95,14 +95,14 @@ Difference:foo.difference.png
 
 *foo.difference.png* will give you an idea of which zones to check. You could try inverting the image to see if it's clearer.
 
-You can then update the relavent resources in */Williamson.BDD/Images/GitHub/* to get your tests running.
+You can then update the relevant resources in */Williamson.BDD/Images/GitHub/* to get your tests running.
 
 #My Notes
 VDD is probably used by me wrong at the moment since the development is NOT driven by an image.  
 Images are captured after the development process to help spot regression. I'll need to change this at some point.
 
 QA will create/update set of accepted images which will be compared against in future tests.  
-This should allow us to spot subtle changes and act accordinally.
+This should allow us to spot subtle changes and act accordingly.
 
 #TODO
 

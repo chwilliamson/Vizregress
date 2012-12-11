@@ -17,6 +17,9 @@ using Williamson.Example.Web.MessageHandlers;
 
 namespace Williamson.Example.Web
 {
+    /// <summary>
+    /// Self hosted web application
+    /// </summary>
     public class App
     {
         static void Main(string[] args) {
@@ -39,6 +42,11 @@ namespace Williamson.Example.Web
                 Stop();
             }
         }
+
+        /// <summary>
+        /// Start the self host
+        /// </summary>
+        /// <returns></returns>
         public App Start()
         {
             Uri = new Uri("Http://localhost:8087");
@@ -51,6 +59,9 @@ namespace Williamson.Example.Web
             return this;
         }
 
+        /// <summary>
+        /// Stop the self host
+        /// </summary>
         public void Stop()
         {
             server.CloseAsync().Wait();

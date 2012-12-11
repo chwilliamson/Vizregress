@@ -6,4 +6,4 @@ Feature: Example Web Application
 
 Scenario: I visit the example page then the title should be set
 Given I visit Example
-Then the page title should be Colins Basic Example
+Then the page title should be Colins Example

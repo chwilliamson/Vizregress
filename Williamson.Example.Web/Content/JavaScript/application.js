@@ -7,17 +7,16 @@ Williamson.ExampleApplication.start = function () {
     $().ready(function () {
         var $dialogEl = $('<span data-bind="template: { name: \'dialog-template\' }"></span>');
         $('#appContainer').append($dialogEl);
-        function Model() {
-            this.title = "What about a Tour";
-            this.text = "Would you like a tour?";
-            this.id = "dialog";
-        }
-        ko.applyBindings(new Model());
+
+        ko.applyBindings(
+            { title: "What about a Tour", text: "Would you like a tour?" }
+            , $dialogEl.get(0));
+
         function remove() {
             $dialogEl.remove();
         }
-        
-        $('#dialog').dialog({
+
+        $dialogEl.dialog({
             modal: true,
             width: 600,
             resizeable: false,
@@ -25,7 +24,7 @@ Williamson.ExampleApplication.start = function () {
                 "Yes please!": function () {
                     $(this).dialog("close");
                     remove();
-                    new Williamson.Tour().begin();
+                    new Williamson.Tour($('#appContainer')).begin();
                 },
                 "No thanks": function () {
                     $(this).dialog("close");
@@ -37,46 +36,69 @@ Williamson.ExampleApplication.start = function () {
     })
 }
 
-/**
-* Takes the user through a quick tour.
-*/
-Williamson.Tour = function () {
+Williamson.Tour = function (element) {
+    /// <summary>
+    /// Start the Tour component
+    /// </summary>
+    /// <param name="element">The element to put the tour in</param>
     this.$stepEl = $('<span data-bind="template: { name: \'step-template\' }"></span>');
-    $('#appContainer').append(this.$stepEl);
+    $(element).append(this.$stepEl);
 
 }
 Williamson.Tour.prototype = {
-    /**
-    Start the tour
-    */
     begin: function () {
-        var self = this;
+        /// <summary>
+        /// Starts the tour
+        /// </summary>
         this._apply(
             "Using Web API Self Host",
             "This application is hosted using the ASP.NET SelfHost with a few hacks. Don\'t rely on it",
-            function() {
-                alert('previous');
-            },
             function () {
-                //go next step
-                self.step2();
-            }
+                //do nothing
+            },
+             $.proxy(function () {
+                 this.step2();
+             }, this),
+            true,
+            false
         );
     },
     step2: function () {
-        alert('todo:step2');
-    }
-    ,
-    _apply: function(title, text,previousClick, nextClick, previousDisabled, nextDisabled) {
+        /// <summary>
+        /// Performs step 2
+        /// </summary>
+        this._apply(
+            "Technologies",
+            "I'm using a variety of technologies",
+            $.proxy(function () {
+                this.begin();
+            }, this),
+            $.proxy(function () {
+                this.begin();
+            }, this),
+            false,
+            false
+        );
+    },
+    _apply: function (title, text, previousClick, nextClick, previousDisabled, nextDisabled) {
+        /// <summary>
+        /// Applies a step changes
+        /// </summary>
+        /// <param name="title">Title</param>
+        /// <param name="text">The Text</param>
+        /// <param name="previousClick">Event fired when the Previous button is clicked</param>
+        /// <param name="nextClick">Event fired when the Next button is clicked</param>
+        /// <param name="previousDisabled">Is the Previous button disabled</param>
+        /// <param name="nextDisabled">Is the Next button disabled</param>
         if (previousDisabled == undefined || !previousDisabled) previousDisabled = false;
         if (nextDisabled == undefined || !nextDisabled) nextDisabled = false;
         ko.applyBindings({
             title: title,
             text: text
-            
+
         }, this.$stepEl.get(0));
 
-        this.$stepEl.find('#nextBtn').button({ disabled: previousDisabled }).click(nextClick);
-        this.$stepEl.find('#previousBtn').button({ disabled: nextDisabled }).click(previousClick);
+        this.$stepEl.find('#nextBtn').button({ disabled: nextDisabled }).click(nextClick);
+        this.$stepEl.find('#previousBtn').button({ disabled: previousDisabled }).click(previousClick);
     }
 }

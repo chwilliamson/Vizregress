@@ -28,7 +28,7 @@ namespace Williamson.BDD.Examples.StepDefinitions
         }
 
         /// <summary>
-        /// Close the driver onces the feature is complete
+        /// Close the driver once the feature is complete
         /// </summary>
         [AfterFeature]
         public static void CloseDriver()
@@ -37,7 +37,7 @@ namespace Williamson.BDD.Examples.StepDefinitions
         }
 
         /// <summary>
-        /// Startup the self host
+        /// Start-up the self host
         /// </summary>
         [BeforeFeature("SelfHost")]
         public static void StartSelfHost() {
