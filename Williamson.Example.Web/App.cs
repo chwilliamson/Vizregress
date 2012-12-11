@@ -51,6 +51,13 @@ namespace Williamson.Example.Web
         {
             Uri = new Uri("Http://localhost:8087");
             var config = new HttpSelfHostConfiguration(Uri);
+            //mapping a default api
+            config.Routes.MapHttpRoute(
+                name: "DefaultApi",
+                routeTemplate: "api/{controller}/{id}",
+                defaults: new { id = RouteParameter.Optional }
+            );
+
             server = new HttpSelfHostServer(config);
 
             config.MessageHandlers.Add(new StaticContentResourceMessageHandler(Uri));

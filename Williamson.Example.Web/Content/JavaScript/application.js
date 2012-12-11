@@ -1,5 +1,6 @@
 ﻿/// <reference path="jquery-1.8.2.js"/>
 /// <reference path="jquery-ui-1.9.1.custom.js"/>
+/// <reference path="knockout.js"/>
 
 Williamson = function () { }
 Williamson.ExampleApplication = function () { }
@@ -24,17 +25,40 @@ Williamson.ExampleApplication.start = function () {
                 "Yes please!": function () {
                     $(this).dialog("close");
                     remove();
-                    new Williamson.Tour($('#appContainer')).begin();
+                    new Williamson.Tour($('#appContainer')).init();
                 },
                 "No thanks": function () {
                     $(this).dialog("close");
                     remove();
+                    new Williamson.Runs($('#appContainer')).init();
+
                 }
 
             }
         });
     })
 }
+
+Williamson.Runs = function (element) {
+    /// <summary>
+    /// 
+    /// </summary>
+    /// <param name="element">The element to render to</param>
+    this.$runsEl = $('<span class="span12" data-bind="template: { name: \'runs-template\' }"></span>');
+    $(element).append(this.$runsEl);
+}
+
+Williamson.Runs.prototype = {
+    init: function () {
+
+        //fetch runs data
+        $.get("/api/Run", $.proxy(function (result) {
+           
+            ko.applyBindings({ runs: result }, this.$runsEl.get(0));
+        },this));        
+    }
+}
+
 
 Williamson.Tour = function (element) {
     /// <summary>
@@ -46,7 +70,7 @@ Williamson.Tour = function (element) {
 
 }
 Williamson.Tour.prototype = {
-    begin: function () {
+    init: function () {
         /// <summary>
         /// Starts the tour
         /// </summary>

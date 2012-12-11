@@ -116,7 +116,12 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App.cs" />
+    <Compile Include="Controllers\RunController.cs" />
+    <Compile Include="Controllers\ExpectationController.cs" />
+    <Compile Include="Controllers\ReportingController.cs" />
     <Compile Include="MessageHandlers\StaticContentMessageHandler.cs" />
+    <Compile Include="Model\ReportItem.cs" />
+    <Compile Include="Model\Run.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -158,8 +163,11 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Content\Css\bootstrap.css" />
     <EmbeddedResource Include="Content\JavaScript\knockout.js" />
+    <EmbeddedResource Include="Content\JavaScript\bootstrap.js" />
+    <EmbeddedResource Include="Content\JavaScript\knockout.mapping.js" />
     <Content Include="packages.config" />
   </ItemGroup>
+  <ItemGroup />
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>

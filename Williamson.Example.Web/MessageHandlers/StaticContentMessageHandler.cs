@@ -26,9 +26,18 @@ namespace Williamson.Example.Web.MessageHandlers
             HttpRequestMessage request, CancellationToken cancellationToken)
         {
             var file = request.RequestUri.LocalPath.Substring(1).ToLowerInvariant();
-            var tsc = new TaskCompletionSource<HttpResponseMessage>();
-            tsc.SetResult(this.Handle(file));
-            return tsc.Task;
+            if (file.StartsWith("api/"))
+            {
+                //pass-through api requests
+                return base.SendAsync(request, cancellationToken);
+            }
+            else
+            {
+                var tsc = new TaskCompletionSource<HttpResponseMessage>();            
+                tsc.SetResult(this.Handle(file));
+                return tsc.Task;
+            }
+            
         }
         private const string CONTENT = "Williamson.Example.Web.Content";
 
@@ -79,7 +88,7 @@ namespace Williamson.Example.Web.MessageHandlers
         /// <returns></returns>
         protected string Js()
         {
-            return CombineStreams(CONTENT + ".JavaScript", "js", "jquery-1.8.2", "jquery-ui-1.9.1.custom","knockout","application");
+            return CombineStreams(CONTENT + ".JavaScript", "js", "jquery-1.8.2", "jquery-ui-1.9.1.custom", "knockout", "knockout.mapping", "application");
         }
 
         /// <summary>
@@ -108,7 +117,7 @@ namespace Williamson.Example.Web.MessageHandlers
         }
 
         /// <summary>
-        /// Combine the streames
+        /// Combine the streams
         /// </summary>
         /// <param name="prefix"></param>
         /// <param name="suffix"></param>

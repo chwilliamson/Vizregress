@@ -8,13 +8,13 @@
 
 <body>
     <div class="container">
-        <div class="row">
+        <div class="row-fluid">
             <div class="hero-unit">
                 <h1>An Example Application</h1>
                 <p>An example</p>
             </div>
         </div>
-        <div class="row" id="appContainer"></div>   
+        <div class="row-fluid" id="appContainer"></div>   
     </div>
     
     <!-- This template is used for the step definition -->
@@ -31,6 +31,25 @@
         <div data-bind="title: title">           
             <p data-bind="text: text"></p>
         </div>
+    </script>
+
+     <script type="text/html" id="runs-template">    
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>Run Date</th>
+                    <th>Run Name</th>
+                    <th></th>               
+                </tr>
+            </thead>
+            <tbody data-bind="foreach:runs">
+                <tr>
+                    <td data-bind="text:RunTime"></td>
+                    <td data-bind="text:Name"></td>
+                    <td><a href="#view" class="btn">View</a></td>
+                </tr>
+            </tbody>
+        </table>       
     </script>
     <!-- Begin the example application -->
     <script type="text/javascript">
