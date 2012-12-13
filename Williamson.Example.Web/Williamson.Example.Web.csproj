@@ -37,9 +37,25 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\packages\Newtonsoft.Json.4.5.10\lib\net40\Newtonsoft.Json.dll</HintPath>
     </Reference>
+    <Reference Include="SisoDb">
+      <HintPath>..\packages\SisoDb.16.1.0\lib\net40\SisoDb.dll</HintPath>
+    </Reference>
+    <Reference Include="SisoDb.Serialization">
+      <HintPath>..\packages\SisoDb.16.1.0\lib\net40\SisoDb.Serialization.dll</HintPath>
+    </Reference>
+    <Reference Include="SisoDb.SqlCe4">
+      <HintPath>..\packages\SisoDb.SqlCe4.16.1.0\lib\net40\SisoDb.SqlCe4.dll</HintPath>
+    </Reference>
+    <Reference Include="SisoDb.SqlServer">
+      <HintPath>..\packages\SisoDb.SqlCe4.16.1.0\lib\net40\SisoDb.SqlServer.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Data.Entity" />
+    <Reference Include="System.Data.SqlServerCe, Version=4.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.SqlServer.Compact.4.0.8876.1\lib\net40\System.Data.SqlServerCe.dll</HintPath>
+    </Reference>
     <Reference Include="System.Drawing" />
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
@@ -116,11 +132,13 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App.cs" />
+    <Compile Include="AppCfg.cs" />
     <Compile Include="Controllers\RunController.cs" />
     <Compile Include="Controllers\ExpectationController.cs" />
     <Compile Include="Controllers\ReportingController.cs" />
     <Compile Include="MessageHandlers\StaticContentMessageHandler.cs" />
-    <Compile Include="Model\ReportItem.cs" />
+    <Compile Include="Model\RunItem.cs" />
+    <Compile Include="Model\RunItemResult.cs" />
     <Compile Include="Model\Run.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -182,6 +200,13 @@
     <AspNetCompiler VirtualPath="temp" PhysicalPath="$(WebProjectOutputDir)" />
   </Target>
   <ProjectExtensions />
+  <PropertyGroup>
+    <PostBuildEvent>
+    if not exist "$(TargetDir)x86" md "$(TargetDir)x86"
+    xcopy /s /y "$(SolutionDir)packages\Microsoft.SqlServer.Compact.4.0.8876.1\NativeBinaries\x86\*.*" "$(TargetDir)x86"
+    if not exist "$(TargetDir)amd64" md "$(TargetDir)amd64"
+    xcopy /s /y "$(SolutionDir)packages\Microsoft.SqlServer.Compact.4.0.8876.1\NativeBinaries\amd64\*.*" "$(TargetDir)amd64"</PostBuildEvent>
+  </PropertyGroup>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">

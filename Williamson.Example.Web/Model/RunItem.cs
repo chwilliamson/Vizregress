@@ -6,41 +6,30 @@ using System.Threading.Tasks;
 
 namespace Williamson.Example.Web.Model
 {
-    /// <summary>
-    /// Represents an individual run
-    /// </summary>
-    public class Run
+    public class RunItem
     {
         /// <summary>
-        /// Identifier
+        /// Result
         /// </summary>
-        public Guid Id
-        {
-            get;
-            set;
-        }
-        /// <summary>
-        /// Name of run
-        /// </summary>
-        public string Name
+        public RunItemResult Result
         {
             get;
             set;
         }
 
         /// <summary>
-        /// Time first image was detected
+        /// Expected Image Identifier
         /// </summary>
-        public DateTime RunTime
+        public Guid ExpectedImageId
         {
             get;
             set;
         }
 
         /// <summary>
-        /// Number of items in this run
+        /// Actual Image Identifier
         /// </summary>
-        public int Items
+        public Guid ActualSourceId
         {
             get;
             set;

@@ -51,6 +51,10 @@ The following frameworks are used:
 * Knockoutjs
 * jQuery
 * jQueryUI
+* SisoDb
+
+##Williamson.Example.Web.Tests
+Contains unit tests for *Williamson.Example.Web*
 
 ##Stuff to know
 

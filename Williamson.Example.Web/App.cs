@@ -43,6 +43,22 @@ namespace Williamson.Example.Web
             }
         }
 
+        public App()
+            : this(new AppCfg {
+                DataDir = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Data")
+            })
+        {
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="cfg"></param>
+        public App(AppCfg cfg)
+        {
+
+        }
+
         /// <summary>
         /// Start the self host
         /// </summary>
@@ -54,8 +70,8 @@ namespace Williamson.Example.Web
             //mapping a default api
             config.Routes.MapHttpRoute(
                 name: "DefaultApi",
-                routeTemplate: "api/{controller}/{id}",
-                defaults: new { id = RouteParameter.Optional }
+                routeTemplate: "api/{controller}/{action}",
+                defaults: new { action = RouteParameter.Optional }
             );
 
             server = new HttpSelfHostServer(config);
