@@ -14,6 +14,8 @@ using System.Threading;
 using System.Reflection;
 using System.IO;
 using Williamson.Example.Web.MessageHandlers;
+using SisoDb;
+using SisoDb.SqlCe4;
 
 namespace Williamson.Example.Web
 {
@@ -45,7 +47,7 @@ namespace Williamson.Example.Web
 
         public App()
             : this(new AppCfg {
-                DataDir = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Data")
+                Name = "Default"
             })
         {
         }
@@ -56,7 +58,7 @@ namespace Williamson.Example.Web
         /// <param name="cfg"></param>
         public App(AppCfg cfg)
         {
-
+            "Data source=|DataDirectory|sisodb.sdf;".CreateSqlCe4Db().EnsureNewDatabase();
         }
 
         /// <summary>
@@ -70,15 +72,14 @@ namespace Williamson.Example.Web
             //mapping a default api
             config.Routes.MapHttpRoute(
                 name: "DefaultApi",
-                routeTemplate: "api/{controller}/{action}",
-                defaults: new { action = RouteParameter.Optional }
+                routeTemplate: "api/{controller}/{id}",
+                defaults: new { id = RouteParameter.Optional }
             );
 
+            
             server = new HttpSelfHostServer(config);
-
             config.MessageHandlers.Add(new StaticContentResourceMessageHandler(Uri));
             server.OpenAsync().Wait();
-
             return this;
         }
 

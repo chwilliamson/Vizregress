@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Williamson.Example.Web.Model
+namespace Williamson.Example.Web.Models
 {
     /// <summary>
     /// Item type

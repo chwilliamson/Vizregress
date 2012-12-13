@@ -5,18 +5,16 @@ using System.Text;
 
 namespace Williamson.Example.Web
 {
-    /// <summary>
-    /// Application Config
-    /// </summary>
     public class AppCfg
     {
         /// <summary>
-        /// Directory Containing Data
+        /// AppConfig friendly name
         /// </summary>
-        public string DataDir
-        {
-            get;
-            set;
-        }
+        public string Name { get; set; }
+
+        /// <summary>
+        /// Indicates that a database pre-population should occur
+        /// </summary>
+        public bool PrePopulate { get; set; }
     }
 }

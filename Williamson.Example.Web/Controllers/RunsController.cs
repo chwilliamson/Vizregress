@@ -6,37 +6,39 @@ using System.Threading.Tasks;
 using System.Web.Http;
 using SisoDb;
 using SisoDb.SqlCe4;
-using Williamson.Example.Web.Model;
+using Williamson.Example.Web.Models;
 
 namespace Williamson.Example.Web.Controllers
 {
     /// <summary>
-    /// A reporting controller
+    /// A runs controller used for viewing runs
     /// </summary>
-    public class RunController : ApiController
+    public class RunsController : ApiController
     {
         ISisoDatabase db = "Data source=|DataDirectory|sisodb.sdf;".CreateSqlCe4Db();
        
         public Run[] Get()
         {
-            return db.UseOnceTo().Query<Run>().ToArray();
+            return db.UseOnceTo().Query<Run>().Where(i=>!i.Deleted).ToArray();
         }
 
         [HttpPost]
-        public Guid Start(Run run)
+        public int Start(Run input)
         {
-            run.Id = Guid.NewGuid();
+            var run = new Run();
             run.RunTime = DateTime.UtcNow;
+            run.Deleted = false;
+            run.Name = input.Name;
             db.UseOnceTo().Insert<Run>(run);
             return run.Id;           
         }
 
-        [HttpPost]
-        public void Delete(Guid runId)
-        {            
-        }
-
-        public void GetAllRunItems(Guid runId) {
-        }
+        [HttpDelete]
+        public void Delete(int id)
+        {
+            var run = db.UseOnceTo().GetById<Run>(id);
+            run.Deleted = true;
+            db.UseOnceTo().Update(run);
+        }        
     }
 }

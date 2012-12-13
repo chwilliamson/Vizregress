@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Williamson.Example.Web.Model
+namespace Williamson.Example.Web.Models
 {
     /// <summary>
     /// Represents an individual run
@@ -14,7 +14,7 @@ namespace Williamson.Example.Web.Model
         /// <summary>
         /// Identifier
         /// </summary>
-        public Guid Id
+        public int Id
         {
             get;
             set;
@@ -41,6 +41,12 @@ namespace Williamson.Example.Web.Model
         /// Number of items in this run
         /// </summary>
         public int Items
+        {
+            get;
+            set;
+        }
+
+        public bool Deleted
         {
             get;
             set;

@@ -133,13 +133,14 @@
   <ItemGroup>
     <Compile Include="App.cs" />
     <Compile Include="AppCfg.cs" />
-    <Compile Include="Controllers\RunController.cs" />
-    <Compile Include="Controllers\ExpectationController.cs" />
-    <Compile Include="Controllers\ReportingController.cs" />
+    <Compile Include="Controllers\ImagesController.cs" />
+    <Compile Include="Controllers\RunsController.cs" />
+    <Compile Include="Controllers\RunItemsController.cs" />
     <Compile Include="MessageHandlers\StaticContentMessageHandler.cs" />
-    <Compile Include="Model\RunItem.cs" />
-    <Compile Include="Model\RunItemResult.cs" />
-    <Compile Include="Model\Run.cs" />
+    <Compile Include="Models\RunFile.cs" />
+    <Compile Include="Models\RunItem.cs" />
+    <Compile Include="Models\RunItemResult.cs" />
+    <Compile Include="Models\Run.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

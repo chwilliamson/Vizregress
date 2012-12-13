@@ -41,7 +41,7 @@ namespace Williamson.BDD.Examples.StepDefinitions
         /// </summary>
         [BeforeFeature("SelfHost")]
         public static void StartSelfHost() {
-            var app = new App();
+            var app = new App(new AppCfg {  Name="bdd",PrePopulate=true});
             app.Start();
             FeatureContext.Current.Set<App>(app);
         }

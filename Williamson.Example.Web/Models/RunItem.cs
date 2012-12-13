@@ -4,10 +4,19 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Williamson.Example.Web.Model
+namespace Williamson.Example.Web.Models
 {
     public class RunItem
     {
+        /// <summary>
+        /// 
+        /// </summary>
+        public long Id
+        {
+            get;
+            set;
+        }
+
         /// <summary>
         /// Result
         /// </summary>
@@ -20,16 +29,16 @@ namespace Williamson.Example.Web.Model
         /// <summary>
         /// Expected Image Identifier
         /// </summary>
-        public Guid ExpectedImageId
+        public string ExpectedId
         {
             get;
             set;
         }
 
         /// <summary>
-        /// Actual Image Identifier
+        /// Actual Image Identifier that has already been uploaded
         /// </summary>
-        public Guid ActualSourceId
+        public int ImageId
         {
             get;
             set;
