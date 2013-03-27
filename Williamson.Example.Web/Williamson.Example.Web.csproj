@@ -137,6 +137,7 @@
     <Compile Include="Controllers\RunsController.cs" />
     <Compile Include="Controllers\RunItemsController.cs" />
     <Compile Include="MessageHandlers\StaticContentMessageHandler.cs" />
+    <Compile Include="Models\ApprovedItem.cs" />
     <Compile Include="Models\RunFile.cs" />
     <Compile Include="Models\RunItem.cs" />
     <Compile Include="Models\RunItemResult.cs" />

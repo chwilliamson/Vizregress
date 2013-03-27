@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
+﻿
 namespace Williamson.Example.Web.Models
 {
     public class RunItem
@@ -12,6 +7,12 @@ namespace Williamson.Example.Web.Models
         /// 
         /// </summary>
         public long Id
+        {
+            get;
+            set;
+        }
+
+        public int RunId
         {
             get;
             set;

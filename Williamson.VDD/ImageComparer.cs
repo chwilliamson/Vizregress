@@ -106,10 +106,9 @@ namespace Williamson.VDD
         /// <returns></returns>
         private bool IsDifferenceTheEscapingColor(Bitmap org, Bitmap act, Action<Bitmap> differenceImage)
         {
+            var result = Utils.GetDifferenceImage(org,act);
             //now get the differences and ensure the color isn't the escape color
-            var difference = new Difference(org);
-            var result = difference.Apply(act);
-            if (differenceImage != null) differenceImage(result);
+             if (differenceImage != null) differenceImage(result);
             //look at all pixels not black
             for (int x = 0; x < result.Width; x++)
             {

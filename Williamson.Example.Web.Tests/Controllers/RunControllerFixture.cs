@@ -102,6 +102,90 @@ namespace Williamson.Example.Web.Tests.Controllers
         }
 
         /// <summary>
+        /// Should fail because we haven't added an imahe
+        /// </summary>
+        [Test]
+        public void FailureOnNoneExistantImageId()
+        {
+            var runName = "Foo Run";
+
+            var client = new HttpClient();
+            var content = new StringContent(
+                JsonConvert.SerializeObject(new { Name = runName }),
+                Encoding.UTF8, "application/json");
+
+            int runId = 0;
+
+            //create a run
+            using (var response = client.PostAsync(new Uri(app.Uri, "api/runs/start"), content).Result)
+            {
+                Assert.IsTrue(response.IsSuccessStatusCode);
+                runId = JsonConvert.DeserializeObject<int>(response.Content.ReadAsStringAsync().Result);
+            }
+
+            //associate with run id
+            var runItemContent = new StringContent(
+                JsonConvert.SerializeObject(new RunItem { ImageId = 101, ExpectedId = "firefox-image-001" }),
+                Encoding.UTF8, "application/json");
+
+            //create a run
+            using (var response = client.PostAsync(new Uri(app.Uri, "api/runitems/create"), runItemContent).Result)
+            {
+                Assert.IsFalse(response.IsSuccessStatusCode);
+            }
+        }
+
+        /// <summary>
+        /// Should fail because we haven't added an imahe
+        /// </summary>
+        [Test]
+        public void FailureOnNoneExistantRunId()
+        {
+            var runName = "Foo Run";
+
+            var client = new HttpClient();
+            var content = new StringContent(
+                JsonConvert.SerializeObject(new { Name = runName }),
+                Encoding.UTF8, "application/json");
+
+            int runId = 0;
+
+            //create a run
+            using (var response = client.PostAsync(new Uri(app.Uri, "api/runs/start"), content).Result)
+            {
+                Assert.IsTrue(response.IsSuccessStatusCode);
+                runId = JsonConvert.DeserializeObject<int>(response.Content.ReadAsStringAsync().Result);
+            }
+
+            int imageId = 0;
+            //upload image
+            using (var imageFile = Assembly.GetExecutingAssembly().GetManifestResourceStream("Williamson.Example.Web.Tests.Resources.Code.png"))
+            {
+                var sc = new StreamContent(imageFile);
+                sc.Headers.ContentDisposition = new System.Net.Http.Headers.ContentDispositionHeaderValue("attachment")
+                {
+                    FileName = "Test.png"
+                };
+                using (var response = client.PostAsync(new Uri(app.Uri, "api/images"), sc).Result)
+                {
+                    Assert.IsTrue(response.IsSuccessStatusCode, "Failed to uploaded");
+                    imageId = JsonConvert.DeserializeObject<int>(response.Content.ReadAsStringAsync().Result);
+                }
+            }
+
+            //associate with run id
+            var runItemContent = new StringContent(
+                JsonConvert.SerializeObject(new RunItem { RunId = 101, ImageId = imageId, ExpectedId = "firefox-image-001" }),
+                Encoding.UTF8, "application/json");
+
+            //create a run
+            using (var response = client.PostAsync(new Uri(app.Uri, "api/runitems/create"), runItemContent).Result)
+            {
+                Assert.IsFalse(response.IsSuccessStatusCode);
+            }
+        }
+
+        /// <summary>
         ///<list type="bullet">
         ///  <item>Create a Run</item>
         ///  <item>Create a RunItem</item>
@@ -153,18 +237,16 @@ namespace Williamson.Example.Web.Tests.Controllers
             }
 
             //associate with run id
+            var runItemContent = new StringContent(
+                JsonConvert.SerializeObject(new RunItem { ImageId = imageId, ExpectedId = "firefox-image-001" }),
+                Encoding.UTF8, "application/json");
 
-            //var runItemContent = new StringContent(
-            //    JsonConvert.SerializeObject(new RunItem { ImageId=imageId, ExpectedId="firefox-image-001" }),
-            //    Encoding.UTF8, "application/json");
-
-            ////create a run
-            //using (var response = client.PostAsync(new Uri(app.Uri, "api/runitems/create"), runItemContent).Result)
-            //{
-            //    Assert.IsTrue(response.IsSuccessStatusCode,"Failed to create");                
-            //}
-
-
+            //create a run
+            using (var response = client.PostAsync(new Uri(app.Uri, "api/runitems/create"), runItemContent).Result)
+            {
+                Assert.IsTrue(response.IsSuccessStatusCode, "Failed to create");
+                var runItemId = JsonConvert.DeserializeObject<long>(response.Content.ReadAsStringAsync().Result);
+            }
         }
     }
 }

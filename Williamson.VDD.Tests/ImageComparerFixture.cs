@@ -15,21 +15,7 @@ namespace Williamson.VDD.Tests
     [TestFixture]
     public class ImageComparerFixture
     {
-        /// <summary>
-        /// Loads image.
-        /// </summary>
-        /// <param name="image">The image without it's extension. By default .png is applied 
-        /// unless you specify a <paramref name="extension"/></param>
-        /// <param name="extension">Default .png</param>
-        /// <returns>A resource stream</returns>
-        private Stream Load(string image, string extension = "png")
-        {
-            var r = "Williamson.VDD.Tests.Images." + image + "." + extension;
-            var s =  Assembly.GetExecutingAssembly().GetManifestResourceStream(r);
-            //if adding new images ensure they are added as an embedded resource
-            if (s == null) Assert.Fail("Cannot load:" + r);
-            return s;
-        }
+        
         /// <summary>
         /// Performs a test checking whether or not two images match
         /// </summary>
@@ -46,8 +32,8 @@ namespace Williamson.VDD.Tests
         [TestCase("Github.Home", "Github.TooSmall", false, TestName = "Images not same size", ExpectedException = typeof(ImagesAreNotSameSizeException))]        
         public void IsEqual(string src1, string src2, bool equal)
         {
-            using (var s1 = this.Load(src1))
-            using (var s2 = this.Load(src2))
+            using (var s1 = Utils.Load(src1))
+            using (var s2 = Utils.Load(src2))
             {
                 var ic = new ImageComparer();
                 Assert.AreEqual(equal, ic.IsEqual(s1,s2));

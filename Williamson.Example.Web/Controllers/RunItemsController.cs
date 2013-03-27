@@ -1,11 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Net.Http;
-using System.Text;
-using System.Threading.Tasks;
-using System.Web;
 using System.Web.Http;
 using SisoDb;
 using SisoDb.SqlCe4;
@@ -27,11 +20,17 @@ namespace Williamson.Example.Web.Controllers
             return new RunItem[0];
         }
 
-        public int Create(RunItem runItem)
+        [HttpPost]
+        public long Create(RunItem runItem)
         {
-            return 0;
-        }
-    }
+            //check image exists
+            if (db.UseOnceTo().GetById<RunFile>(runItem.ImageId)==null) throw new ApplicationException("No record found");
+            
+            //check run id
+            if (db.UseOnceTo().GetById<Run>(runItem.RunId) == null) throw new ApplicationException("No record found");
 
-       
+            db.UseOnceTo().Insert(runItem);
+            return runItem.Id;
+        }
+    }       
 }
