@@ -22,11 +22,10 @@ namespace Williamson.VDD.Tests.Zone
             var extractor = new ZoneExtractor();
 
             var actual = extractor.ExtractZone(original, zoned);
-            var expected = Utils.Load("Zoning.OverallStatus_Zoned");
+            var expected = Utils.Load("Zoning.OverallStatus_ZoneCut");
 
             var comparer = new ImageComparer();
-            Assert.IsTrue(comparer.IsEqual(expected, actual.Image));
-
+            Assert.IsTrue(comparer.IsEqual(expected, actual));
         }
     }
 }
