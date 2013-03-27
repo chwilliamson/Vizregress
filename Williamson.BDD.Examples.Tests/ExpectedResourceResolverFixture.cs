@@ -11,8 +11,8 @@ namespace Williamson.BDD.Examples.Tests
     public class ExpectedResourceResolverFixture
     {
         [Test]
-        [TestCase("foo.bar", Browsers.FireFox_3_6_28, null, "Williamson.BDD.Examples.Images.foo.FireFox_3_6_28.bar.png", TestName="No Locale")]
-        [TestCase("foo.bar", Browsers.FireFox_3_6_28, "en-GB", "Williamson.BDD.Examples.Images.foo.FireFox_3_6_28.bar.en-gb.png", TestName="en-GB")]      
+        [TestCase("foo.bar", Browsers.FireFox12, null, "Williamson.BDD.Examples.Images.foo.FireFox12.bar.png", TestName="No Locale")]
+        [TestCase("foo.bar", Browsers.FireFox12, "en-GB", "Williamson.BDD.Examples.Images.foo.FireFox12.bar.en-gb.png", TestName = "en-GB")]      
         public void ResourceResolveBasic(string name, Browsers browser, string ietf, string expectedResource) 
         {            
             var resolver = MockRepository.GenerateStrictMock<ExpectedResourceResolver>();

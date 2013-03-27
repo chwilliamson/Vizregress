@@ -4,7 +4,7 @@ using System.Drawing.Imaging;
 using System.Globalization;
 using System.IO;
 using AForge.Imaging;
-using AForge.Imaging.Filters;
+using Williamson.VDD.Zone;
 
 namespace Williamson.VDD
 {
@@ -37,6 +37,20 @@ namespace Williamson.VDD
             if (ignoreCode == null) throw new ArgumentNullException("ignoreCode");
             if (ignoreCode.Length == 6) ignoreCode = "FF" + ignoreCode;
             this.IgnoreColor = ignoreCode;
+        }
+
+        /// <summary>
+        /// Determines whether or not a zone looks as expected.
+        /// </summary>
+        /// <param name="expected"></param>
+        /// <param name="actual"></param>
+        /// <param name="actualWithZone"></param>
+        /// <returns></returns>
+        public bool ZonedEqual(Stream expected, Stream actual, Stream actualWithZone)
+        {
+            var extractor = new ZoneExtractor();
+            var extracted = extractor.ExtractZone(actual, actualWithZone);
+            return IsEqual(expected, extracted);
         }
 
         /// <summary>

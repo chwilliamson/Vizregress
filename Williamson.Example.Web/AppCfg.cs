@@ -13,7 +13,8 @@ namespace Williamson.Example.Web
         public string Name { get; set; }
 
         /// <summary>
-        /// Indicates that a database pre-population should occur
+        /// Indicates that a database pre-population should occur. This will override the existing
+        /// database and add some default configuration used for tests.
         /// </summary>
         public bool PrePopulate { get; set; }
     }

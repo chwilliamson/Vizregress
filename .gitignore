@@ -109,3 +109,4 @@ UpgradeLog*.XML
 *.feature.cs
 
 ignorethis
+.nuget

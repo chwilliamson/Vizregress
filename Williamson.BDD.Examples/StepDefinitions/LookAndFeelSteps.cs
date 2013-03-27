@@ -2,7 +2,6 @@
 using System.Drawing;
 using System.Drawing.Imaging;
 using System.IO;
-using System.Reflection;
 using NUnit.Framework;
 using OpenQA.Selenium;
 using TechTalk.SpecFlow;
@@ -37,21 +36,15 @@ namespace Williamson.BDD.Examples.StepDefinitions
                     actualOutput,
                     ImageFormat.Png);                
 
-                //TODO: DI
                 var resolver = new ExpectedResourceResolver();
                 using (var streamExpected = resolver.Resolve(name,InformationalWebDriver))
                 using (var streamActual = File.OpenRead(actualOutput))
                 {
-                    if (streamActual == null) Assert.Fail("No actual image: " + actualOutput);
-                    //save expected
+                     //save expected
                     new Bitmap(streamExpected).Save(expectedOutput);
-                       
+
                     //now compare current with base
-                    Assert.IsTrue(new ImageComparer().IsEqual(streamExpected, streamActual, (bm) =>
-                    {
-                        //save the diffences to manually inspect later                        
-                        bm.Save(differenceOutput);
-                    }), 
+                    Assert.IsTrue(new ImageComparer().IsEqual(streamExpected, streamActual, (bm) => bm.Save(differenceOutput)), 
                     string.Format("Expected Image: {0}{3}But was: {1}{3}Difference: {2}", actualOutput,expectedOutput,differenceOutput, Environment.NewLine));
                 }
 

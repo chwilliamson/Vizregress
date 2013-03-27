@@ -1,11 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using OpenQA.Selenium;
-using TechTalk.SpecFlow;
+﻿using TechTalk.SpecFlow;
 using Williamson.Example.Web;
 
 namespace Williamson.BDD.Examples.StepDefinitions
@@ -41,9 +34,9 @@ namespace Williamson.BDD.Examples.StepDefinitions
         /// </summary>
         [BeforeFeature("SelfHost")]
         public static void StartSelfHost() {
-            var app = new App(new AppCfg {  Name="bdd",PrePopulate=true});
+            var app = new App();
             app.Start();
-            FeatureContext.Current.Set<App>(app);
+            FeatureContext.Current.Set(app);
         }
 
         /// <summary>

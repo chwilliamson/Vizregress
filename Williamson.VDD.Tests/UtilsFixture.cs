@@ -26,10 +26,10 @@ namespace Williamson.VDD.Tests
         public void GetZoneTest2()
         {
             var result = VDD.Utils.GetBounds(Utils.Load("Zoning.OverallStatus_Zoned"));
-            Assert.AreEqual(616, result.X);
-            Assert.AreEqual(317, result.Y);
-            Assert.AreEqual(50, result.Width);
-            Assert.AreEqual(50, result.Height);
+            Assert.AreEqual(621, result.X);
+            Assert.AreEqual(328, result.Y);
+            Assert.AreEqual(249, result.Width);
+            Assert.AreEqual(177, result.Height);
         }
     }
 }

@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Drawing;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Firefox;
 
@@ -25,7 +20,7 @@ namespace Williamson.BDD.Examples
             var driver = new FirefoxDriver();
             driver.Manage().Window.Size = new Size(994, 1014);
             //there options should come from the environment
-            return new InformationalDriver(Browsers.FireFox_3_6_28, null,driver);
+            return new InformationalDriver(Browsers.FireFox12, null,driver);
         }
 
         #endregion

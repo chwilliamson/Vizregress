@@ -1,15 +1,14 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Drawing;
+﻿using System.Drawing;
 using System.Drawing.Imaging;
 using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using AForge.Imaging;
 
 namespace Williamson.VDD.Zone
 {
+    /// <summary>
+    /// A extract that will extract rectangles from images.  
+    /// <para/>
+    /// Images with a single zone are expected.
+    /// </summary>
     public class ZoneExtractor
     {
         /// <summary>

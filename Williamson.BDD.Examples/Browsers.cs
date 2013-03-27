@@ -8,6 +8,6 @@
         /// <summary>
         /// FireFox 3.6.28
         /// </summary>
-        FireFox_3_6_28
+        FireFox12
     }
 }

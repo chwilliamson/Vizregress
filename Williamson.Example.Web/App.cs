@@ -1,22 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
 using System.Web.Http.SelfHost;
 using System.Web.Http;
-using System.Web.Mvc;
-using System.Web.Routing;
-using System.Web.Optimization;
-using System.Net.Http;
-using System.Threading.Tasks;
-using System.Net;
-using System.Threading;
-using System.Reflection;
-using System.IO;
 using Williamson.Example.Web.MessageHandlers;
-using SisoDb;
-using SisoDb.SqlCe4;
-
 namespace Williamson.Example.Web
 {
     /// <summary>
@@ -31,7 +16,7 @@ namespace Williamson.Example.Web
             app.Stop();
         }
         public Uri Uri { get; set; }
-        HttpSelfHostServer server;
+        HttpSelfHostServer _server;
         public void StartAndAction(Action<Uri> doWithUri)
         {
             Start();
@@ -44,23 +29,7 @@ namespace Williamson.Example.Web
                 Stop();
             }
         }
-
-        public App()
-            : this(new AppCfg {
-                Name = "Default"
-            })
-        {
-        }
-
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="cfg"></param>
-        public App(AppCfg cfg)
-        {
-            "Data source=|DataDirectory|sisodb.sdf;".CreateSqlCe4Db().EnsureNewDatabase();
-        }
-
+       
         /// <summary>
         /// Start the self host
         /// </summary>
@@ -77,9 +46,9 @@ namespace Williamson.Example.Web
             );
 
             
-            server = new HttpSelfHostServer(config);
+            _server = new HttpSelfHostServer(config);
             config.MessageHandlers.Add(new StaticContentResourceMessageHandler(Uri));
-            server.OpenAsync().Wait();
+            _server.OpenAsync().Wait();
             return this;
         }
 
@@ -88,7 +57,7 @@ namespace Williamson.Example.Web
         /// </summary>
         public void Stop()
         {
-            server.CloseAsync().Wait();
+            _server.CloseAsync().Wait();
         }
         
     }

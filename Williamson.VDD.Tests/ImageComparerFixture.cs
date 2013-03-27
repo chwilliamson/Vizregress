@@ -1,11 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Reflection;
-using System.Text;
-using System.Threading.Tasks;
-using NUnit.Framework;
+﻿using NUnit.Framework;
 
 namespace Williamson.VDD.Tests
 {
@@ -27,7 +20,7 @@ namespace Williamson.VDD.Tests
         [TestCase("Google.Home", "Google.Home.SigninReducedSize", false, TestName = "Search Button Smaller")]
         [TestCase("Github.Home", "Github.Home", true, TestName = "Github same")]
         [TestCase("Github.Home.IgnoreSections", "Github.Home.LineThroughStats", true, TestName = "Github same with change in an 'ignored' section")]
-        [TestCase("Github.Home.IgnoreSections", "Github.Home.LineThroughNoneIgnoredSection", false, TestName = "Github same with change not an 'ignored' section")]
+        [TestCase("Github.Home.IgnoreSections", "Github.Home.LineThroughNoneIgnoredSection", false, TestName = "Github same with change not in 'ignored' section")]
         [TestCase("Github.Home.IgnoreSections", "Github.Home.IgnoreSections", true, TestName = "Lines Through")]
         [TestCase("Github.Home", "Github.TooSmall", false, TestName = "Images not same size", ExpectedException = typeof(ImagesAreNotSameSizeException))]        
         public void IsEqual(string src1, string src2, bool equal)

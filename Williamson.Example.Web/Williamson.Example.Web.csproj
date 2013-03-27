@@ -13,6 +13,23 @@
     <RootNamespace>Williamson.Example.Web</RootNamespace>
     <AssemblyName>Williamson.Example.Web</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <PublishUrl>publish\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
+    <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\</SolutionDir>
+    <RestorePackages>true</RestorePackages>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -37,18 +54,6 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\packages\Newtonsoft.Json.4.5.10\lib\net40\Newtonsoft.Json.dll</HintPath>
     </Reference>
-    <Reference Include="SisoDb">
-      <HintPath>..\packages\SisoDb.16.1.0\lib\net40\SisoDb.dll</HintPath>
-    </Reference>
-    <Reference Include="SisoDb.Serialization">
-      <HintPath>..\packages\SisoDb.16.1.0\lib\net40\SisoDb.Serialization.dll</HintPath>
-    </Reference>
-    <Reference Include="SisoDb.SqlCe4">
-      <HintPath>..\packages\SisoDb.SqlCe4.16.1.0\lib\net40\SisoDb.SqlCe4.dll</HintPath>
-    </Reference>
-    <Reference Include="SisoDb.SqlServer">
-      <HintPath>..\packages\SisoDb.SqlCe4.16.1.0\lib\net40\SisoDb.SqlServer.dll</HintPath>
-    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Data.Entity" />
@@ -66,6 +71,7 @@
     <Reference Include="System.Web.Http.SelfHost, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.AspNet.WebApi.SelfHost.4.0.20918.0\lib\net40\System.Web.Http.SelfHost.dll</HintPath>
     </Reference>
+    <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Web" />
     <Reference Include="System.Web.Extensions" />
@@ -133,15 +139,7 @@
   <ItemGroup>
     <Compile Include="App.cs" />
     <Compile Include="AppCfg.cs" />
-    <Compile Include="Controllers\ImagesController.cs" />
-    <Compile Include="Controllers\RunsController.cs" />
-    <Compile Include="Controllers\RunItemsController.cs" />
     <Compile Include="MessageHandlers\StaticContentMessageHandler.cs" />
-    <Compile Include="Models\ApprovedItem.cs" />
-    <Compile Include="Models\RunFile.cs" />
-    <Compile Include="Models\RunItem.cs" />
-    <Compile Include="Models\RunItemResult.cs" />
-    <Compile Include="Models\Run.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -185,7 +183,32 @@
     <EmbeddedResource Include="Content\JavaScript\knockout.js" />
     <EmbeddedResource Include="Content\JavaScript\bootstrap.js" />
     <EmbeddedResource Include="Content\JavaScript\knockout.mapping.js" />
+    <Content Include="Content\JavaScript\jquery.looksLike.js" />
+    <Content Include="Content\Sandbox\JobsGrid.html" />
     <Content Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Williamson.VDD\Williamson.VDD.csproj">
+      <Project>{ad9cc508-37f3-4365-b635-25ee81f82d0f}</Project>
+      <Name>Williamson.VDD</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include=".NETFramework,Version=v4.5">
+      <Visible>False</Visible>
+      <ProductName>Microsoft .NET Framework 4.5 %28x86 and x64%29</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Client.3.5">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1 Client Profile</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
   </ItemGroup>
   <ItemGroup />
   <PropertyGroup>
@@ -209,6 +232,7 @@
     if not exist "$(TargetDir)amd64" md "$(TargetDir)amd64"
     xcopy /s /y "$(SolutionDir)packages\Microsoft.SqlServer.Compact.4.0.8876.1\NativeBinaries\amd64\*.*" "$(TargetDir)amd64"</PostBuildEvent>
   </PropertyGroup>
+  <Import Project="$(SolutionDir)\.nuget\NuGet.targets" Condition="Exists('$(SolutionDir)\.nuget\NuGet.targets')" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">

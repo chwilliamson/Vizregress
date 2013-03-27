@@ -12,11 +12,15 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 		readme.md = readme.md
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Williamson.BDD.Examples.Tests", "Williamson.BDD.Examples.Tests\Williamson.BDD.Examples.Tests.csproj", "{4F54ED79-1ACA-4877-A136-8864D46DBB3F}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Williamson.Example.Web", "Williamson.Example.Web\Williamson.Example.Web.csproj", "{93B626C5-5FB9-46AC-8C18-44BBF0069557}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Williamson.Example.Web.Tests", "Williamson.Example.Web.Tests\Williamson.Example.Web.Tests.csproj", "{15A2ABCF-361C-4E35-93E5-37129F8CEB1E}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".nuget", ".nuget", "{5D903EB7-3DBE-4F3E-B808-9657A0D2B31F}"
+	ProjectSection(SolutionItems) = preProject
+		.nuget\NuGet.Config = .nuget\NuGet.Config
+		.nuget\NuGet.targets = .nuget\NuGet.targets
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Williamson.BDD.Examples.Tests", "Williamson.BDD.Examples.Tests\Williamson.BDD.Examples.Tests.csproj", "{4F54ED79-1ACA-4877-A136-8864D46DBB3F}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -36,18 +40,14 @@ Global
 		{AD9CC508-37F3-4365-B635-25EE81F82D0F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{AD9CC508-37F3-4365-B635-25EE81F82D0F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{AD9CC508-37F3-4365-B635-25EE81F82D0F}.Release|Any CPU.Build.0 = Release|Any CPU
-		{4F54ED79-1ACA-4877-A136-8864D46DBB3F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{4F54ED79-1ACA-4877-A136-8864D46DBB3F}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{4F54ED79-1ACA-4877-A136-8864D46DBB3F}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{4F54ED79-1ACA-4877-A136-8864D46DBB3F}.Release|Any CPU.Build.0 = Release|Any CPU
 		{93B626C5-5FB9-46AC-8C18-44BBF0069557}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{93B626C5-5FB9-46AC-8C18-44BBF0069557}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{93B626C5-5FB9-46AC-8C18-44BBF0069557}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{93B626C5-5FB9-46AC-8C18-44BBF0069557}.Release|Any CPU.Build.0 = Release|Any CPU
-		{15A2ABCF-361C-4E35-93E5-37129F8CEB1E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{15A2ABCF-361C-4E35-93E5-37129F8CEB1E}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{15A2ABCF-361C-4E35-93E5-37129F8CEB1E}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{15A2ABCF-361C-4E35-93E5-37129F8CEB1E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4F54ED79-1ACA-4877-A136-8864D46DBB3F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4F54ED79-1ACA-4877-A136-8864D46DBB3F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4F54ED79-1ACA-4877-A136-8864D46DBB3F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4F54ED79-1ACA-4877-A136-8864D46DBB3F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

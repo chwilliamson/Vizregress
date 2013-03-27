@@ -1,5 +1,4 @@
 ﻿using System.Drawing;
-using System.Drawing.Imaging;
 using System.Globalization;
 using System.IO;
 using AForge.Imaging.Filters;
@@ -21,27 +20,27 @@ namespace Williamson.VDD
             return result;
         }
 
-        private class XY
+        private class Xy
         {
             public int X { get; set; }
             public int Y { get; set; }
         }
 
-        public static Rectangle GetBounds(Stream image, string color = "#FF0000") //#FF0000 = red
+        public static Rectangle GetBounds(Stream image, string color = "#FF0000")
         {
             var org = new Bitmap(image).To24bpp();
             return GetBounds(org);
         }
 
         /// <summary>
-        /// 
+        /// Get the bounds for the <paramref name="color"/> rectangle on the <paramref name="image"/>
         /// </summary>
         /// <param name="image"></param>
         /// <param name="color"></param>
-        public static Rectangle GetBounds(Bitmap image, string color = "FFFF0000") //FF0000 = red
+        public static Rectangle GetBounds(Bitmap image, string color = "FFFF0000")
         {
-            var tl = new XY { X = -1, Y = -1 };
-            var br = new XY { X = -1, Y = -1 };
+            var tl = new Xy { X = -1, Y = -1 };
+            var br = new Xy { X = -1, Y = -1 };
 
             //check src image to see if it's the escape color
             var actualColor = int.Parse(color, NumberStyles.AllowHexSpecifier, CultureInfo.InvariantCulture);
