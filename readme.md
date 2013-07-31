@@ -1,8 +1,8 @@
-#Visual Driven Development (VDD)
+#Visual Regression (Vizregress)
 Spot visual regression in your web application by comparing screenshots against a approved set of screenshots.
 
 This is my project where I use TDD (Test Driver Development) to develop units of code and behaviours when writing tests.  
-You'll see that *Williamson.VDD.Tests* performs tests against *Williamson.VDD*.
+You'll see that *Vizregress.Tests* performs tests against *Vizregress*.
 
 I use [SpecFlow](http://www.specflow.org/) as my BDD (Behaviour Driven Development) tool to perform browser based tests. 
 For me BDD sits strongly within the QA domain and maps nicely when documenting features and scenarios.
@@ -23,7 +23,7 @@ This is a research project using [AForge.Net Framework](http://code.google.com/p
 The idea to a create a set of expected images for different parts of an application that can be compared in a test.
 
 #Project Breakdown
-##Williamson.VDD
+##Vizregress
 Contains the core image utilities based on [AForge.Net Framework](http://code.google.com/p/aforge/) for determining whether or not images are equal.
 
 This is the assembly that you'll consume in your test application.
@@ -35,7 +35,7 @@ This could be to excluded zones that are locale specific or contain dynamic text
 The RGB region is configurable defaulting to FFFFD800.
 
 e.g. The zone below (yellow rectangle at top) ignores the github statistics bar. 
-![](https://raw.github.com/cwilliamson1980/Williamson.VDD/master/Williamson.VDD.Tests/Images/Github.Home.IgnoreSections.png?raw=true)
+![](https://raw.github.com/cwilliamson1980/Vizregress/master/Vizregress.Tests/Images/Github.Home.IgnoreSections.png?raw=true)
 
 ###Match Regions and Zones
 
@@ -45,15 +45,15 @@ You can identify and compare regions within an image.
 
 Below is the original article
 
-![](https://raw.github.com/cwilliamson1980/Williamson.VDD/master/Williamson.VDD.Tests/Images/Zoning/OverallStatus_NoZones.png?raw=true)
+![](https://raw.github.com/cwilliamson1980/Vizregress/master/Vizregress.Tests/Images/Zoning/OverallStatus_NoZones.png?raw=true)
 
 I have chosen that I want to extract the donkey image as the zone of interest
 
-![](https://raw.github.com/cwilliamson1980/Williamson.VDD/master/Williamson.VDD.Tests/Images/Zoning/OverallStatus_Zoned.png?raw=true)
+![](https://raw.github.com/cwilliamson1980/Vizregress/master/Vizregress.Tests/Images/Zoning/OverallStatus_Zoned.png?raw=true)
 
 so you'll get
 
-![](https://raw.github.com/cwilliamson1980/Williamson.VDD/master/Williamson.VDD.Tests/Images/Zoning/OverallStatus_ZoneCut.png?raw=true)
+![](https://raw.github.com/cwilliamson1980/Vizregress/master/Vizregress.Tests/Images/Zoning/OverallStatus_ZoneCut.png?raw=true)
 
 ###Images currently have to be saved as png files
 This is the way it is for the moment.
@@ -70,19 +70,19 @@ You'll have to take this into consideration when designing your automation platf
 
 You could solve this by allowing your developers to provision VM's that are used by your build environment.
 
-##Williamson.VDD.Tests
-Contains tests for *Williamson.VDD* using NUnit.
+##Vizregress.Tests
+Contains tests for *Vizregress.Tests* using NUnit.
 
-##Williamson.BDD.Examples
+##Vizregress.BDD.Examples
 Contains example Selenium tests using the WebDriver to assert DOM properties.  
 It takes screenshots and compares them to some expected embedded resources.
 
 I have used SpecFlow to create features so you'll need to download the SpecFlow with NUnit extension to run them.
 
-Take this project and modify, make your own and grow :)  It's meant to be your starting point; or an example of how to use Williamson.VDD.
+Take this project and modify, make your own and grow :)  It's meant to be your starting point; or an example of how to use Vizregress.
 
 ###Image naming conventions
-Images are currently stored as embedded resources at *Williamson.BDD.Images* and structured using the following naming convention:
+Images are currently stored as embedded resources at *Vizregress.BDD.Images* and structured using the following naming convention:
 
 * Site name
   * Browser
@@ -110,11 +110,11 @@ Difference:foo.difference.png
 *foo.difference.png* will give you an idea of which zones to check.
 You could try inverting the image to see if it's clearer to find the difference.
 
-##Williamson.BDD.Examples.Tests
-Contains tests for *Williamson.BDD.Examples* using NUnit
+##Vizregress.BDD.Examples.Tests
+Contains tests for *Vizregress.BDD.Examples* using NUnit
 
-##Williamson.Example.Web
-A SelfHosted web example required by the selenium tests in Williamson.VDD.Tests.  
+##Vizregress.Example.Web
+A SelfHosted web example required by the selenium tests in Vizregress.Tests.  
 It's an ASP.NET Web API SelfHost and I added a custom MessageHandler to serve embedded content for testing purposes.
 
 The following frameworks are used:
