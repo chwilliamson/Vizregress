@@ -86,20 +86,21 @@ Images are currently stored as embedded resources at *Williamson.BDD.Images* and
 
 * Site name
   * Browser
-   * Page.png
-   * Page.en-GB.png
+     * Page.png
+     * Page.en-GB.png
 
 Example
 
 * Example
  * FireFox12
-   * Home.png
-   * SelfHost.png
+     * Home.png
+     * SelfHost.png
 
 If a page variant Page.en-US.png isn't found then it'll fall back to Page.png.
 
 ###Images are exported on failure
 If a failure occurs the actual image is written to the executing domain base directory with naming convention of *foo.actual.png*, *foo.expected.png* and *foo.difference.png*.  
+
 These paths should be detailed in the assertion message like:
 
 Expected Image: foo.expected.png
@@ -108,8 +109,6 @@ Difference:foo.difference.png
 
 *foo.difference.png* will give you an idea of which zones to check.
 You could try inverting the image to see if it's clearer to find the difference.
-
-You can then update the relevant resources in */Williamson.BDD/Images/GitHub/* to get your tests running.
 
 ##Williamson.BDD.Examples.Tests
 Contains tests for *Williamson.BDD.Examples* using NUnit
