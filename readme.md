@@ -1,7 +1,7 @@
 #Visual Regression (Vizregress)
-Spot visual regression in your web application by comparing screenshots against a approved set of screenshots.
+Spot visual regression in your web application by comparing screenshots against an approved set of screenshots.
 
-This is my project where I use TDD (Test Driver Development) to develop units of code and behaviours when writing tests.  
+This is my project where I use TDD (Test Driven Development) to develop units of code and behaviours when writing tests.  
 You'll see that *Vizregress.Tests* performs tests against *Vizregress*.
 
 I use [SpecFlow](http://www.specflow.org/) as my BDD (Behaviour Driven Development) tool to perform browser based tests. 
