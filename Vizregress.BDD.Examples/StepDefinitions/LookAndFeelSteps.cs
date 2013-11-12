@@ -5,7 +5,6 @@ using System.IO;
 using NUnit.Framework;
 using OpenQA.Selenium;
 using TechTalk.SpecFlow;
-using Williamson.VDD;
 
 namespace Vizregress.BDD.Examples.StepDefinitions
 {
@@ -17,7 +16,7 @@ namespace Vizregress.BDD.Examples.StepDefinitions
     {
         /// <summary>
         /// The name of the embedded resource to use.  The image resources are stored in 
-        /// <see cref="Williamson.BDD.Images"/>
+        /// <see cref="Vizregress.BDD.Examples.Images"/>
         /// </summary>
         /// <param name="name"></param>
         [Then(@"the screen should look like (.*)")]

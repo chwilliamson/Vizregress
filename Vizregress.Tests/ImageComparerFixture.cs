@@ -1,5 +1,4 @@
 ﻿using NUnit.Framework;
-using Williamson.VDD;
 
 namespace Vizregress.Tests
 {
@@ -26,8 +25,8 @@ namespace Vizregress.Tests
         [TestCase("Github.Home", "Github.TooSmall", false, TestName = "Images not same size", ExpectedException = typeof(ImagesAreNotSameSizeException))]        
         public void IsEqual(string src1, string src2, bool equal)
         {
-            using (var s1 = Vizregress.Tests.Utils.Load(src1))
-            using (var s2 = Vizregress.Tests.Utils.Load(src2))
+            using (var s1 = Utils.Load(src1))
+            using (var s2 = Utils.Load(src2))
             {
                 var ic = new ImageComparer();
                 Assert.AreEqual(equal, ic.IsEqual(s1,s2));

@@ -17,7 +17,7 @@ namespace Vizregress.BDD.Examples.StepDefinitions
             var url = "https://github.com/";
             if (name.Equals("Example", StringComparison.OrdinalIgnoreCase))
             {
-                url = FeatureContext.Current.Get<App>().Uri.ToString() + "/";
+                url = FeatureContext.Current.Get<App>().Uri + "/";
             }
             WebDriver.
                 Navigate().

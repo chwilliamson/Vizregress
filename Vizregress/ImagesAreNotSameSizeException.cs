@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Drawing;
 
-namespace Williamson.VDD
+namespace Vizregress
 {
     /// <summary>
     /// Means that the images were not the same size

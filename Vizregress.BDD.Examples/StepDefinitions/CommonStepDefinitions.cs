@@ -17,7 +17,7 @@ namespace Vizregress.BDD.Examples.StepDefinitions
         {
             var factory = new WebDriverFactory();
             var id = factory.Create();
-            FeatureContext.Current.Set<IInformationalWebDriver>(id);
+            FeatureContext.Current.Set(id);
         }
 
         /// <summary>

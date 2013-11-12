@@ -17,7 +17,7 @@ namespace Vizregress.Example.Web
             app.Stop();
         }
         public Uri Uri { get; set; }
-        HttpSelfHostServer _server;
+        HttpSelfHostServer server;
         public void StartAndAction(Action<Uri> doWithUri)
         {
             Start();
@@ -47,9 +47,9 @@ namespace Vizregress.Example.Web
             );
 
             
-            _server = new HttpSelfHostServer(config);
+            server = new HttpSelfHostServer(config);
             config.MessageHandlers.Add(new StaticContentResourceMessageHandler(Uri));
-            _server.OpenAsync().Wait();
+            server.OpenAsync().Wait();
             return this;
         }
 
@@ -58,7 +58,7 @@ namespace Vizregress.Example.Web
         /// </summary>
         public void Stop()
         {
-            _server.CloseAsync().Wait();
+            server.CloseAsync().Wait();
         }
         
     }

@@ -6,8 +6,8 @@
     public enum Browsers
     {
         /// <summary>
-        /// FireFox 3.6.28
+        /// FireFox 22
         /// </summary>
-        FireFox12
+        FireFox22
     }
 }

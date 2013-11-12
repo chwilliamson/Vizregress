@@ -60,7 +60,7 @@ This is the way it is for the moment.
 
 ###Differing images
 Your default browser size may differ from mine so you might have failing tests due to mismatching image sizes.
-I'm using FireFox 12 so it's possible later versions might render things differently.
+I'm using FireFox 22 so it's possible later versions might render things differently.
 
 You'll have to take this into consideration when designing your automation platform.
 
@@ -92,7 +92,7 @@ Images are currently stored as embedded resources at *Vizregress.BDD.Images* and
 Example
 
 * Example
- * FireFox12
+ * FireFox22
      * Home.png
      * SelfHost.png
 

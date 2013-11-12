@@ -20,7 +20,7 @@ namespace Vizregress.BDD.Examples
             var driver = new FirefoxDriver();
             driver.Manage().Window.Size = new Size(994, 1014);
             //there options should come from the environment
-            return new InformationalDriver(Browsers.FireFox12, null,driver);
+            return new InformationalDriver(Browsers.FireFox22, null,driver);
         }
 
         #endregion
@@ -35,9 +35,9 @@ namespace Vizregress.BDD.Examples
                 string ietf, 
                 IWebDriver driver)
             {
-                this.WebDriver = driver;
-                this.Browser = browser;
-                this.Locale = ietf;
+                WebDriver = driver;
+                Browser = browser;
+                Locale = ietf;
             }            
 
             #region IInformationalWebDriver Members

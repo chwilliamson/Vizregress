@@ -5,7 +5,6 @@ using System.Globalization;
 using System.IO;
 using AForge.Imaging;
 using Vizregress.Zone;
-using Williamson.VDD;
 
 namespace Vizregress
 {
