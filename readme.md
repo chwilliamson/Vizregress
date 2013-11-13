@@ -60,7 +60,6 @@ This is the way it is for the moment.
 
 ###Differing images
 Your default browser size may differ from mine so you might have failing tests due to mismatching image sizes.
-I'm using FireFox 22 so it's possible later versions might render things differently.
 
 You'll have to take this into consideration when designing your automation platform.
 
@@ -92,7 +91,7 @@ Images are currently stored as embedded resources at *Vizregress.BDD.Images* and
 Example
 
 * Example
- * FireFox22
+ * PhantomJS
      * Home.png
      * SelfHost.png
 
@@ -123,3 +122,8 @@ The following frameworks are used:
 * Knockoutjs
 * jQuery
 * jQueryUI
+
+## Problems
+
+*System.ServiceModel.AddressAccessDeniedException : HTTP could not register URL http://+:8087/. Your process does not have access rights to this namespace (see http://go.microsoft.com/fwlink/?LinkId=70353 for details).*
+Run Visual Studio as an administrator.

@@ -6,8 +6,8 @@
     public enum Browsers
     {
         /// <summary>
-        /// FireFox 22
+        /// Phantomjs
         /// </summary>
-        FireFox22
+        Phantomjs
     }
 }

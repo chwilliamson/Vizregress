@@ -1,6 +1,6 @@
 ﻿using System.Drawing;
 using OpenQA.Selenium;
-using OpenQA.Selenium.Firefox;
+using OpenQA.Selenium.PhantomJS;
 
 namespace Vizregress.BDD.Examples
 {
@@ -17,10 +17,13 @@ namespace Vizregress.BDD.Examples
         /// <returns></returns>
         public IInformationalWebDriver Create()
         {
-            var driver = new FirefoxDriver();
-            driver.Manage().Window.Size = new Size(994, 1014);
+            var options = new PhantomJSOptions();
+            options.AddAdditionalCapability("phantomjs.page.settings.userAgent", "Mozilla/5.0 (Windows NT 6.0; WOW64) AppleWebKit/535.7 (KHTML, like Gecko) Chrome/16.0.912.75 Safari/535.7");
+            var driver = new PhantomJSDriver(options);
+     
+            driver.Manage().Window.Size = new Size(1280, 800);
             //there options should come from the environment
-            return new InformationalDriver(Browsers.FireFox22, null,driver);
+            return new InformationalDriver(Browsers.Phantomjs, null,driver);
         }
 
         #endregion

@@ -80,7 +80,7 @@ namespace Vizregress
             var act = new Bitmap(actual).To24bpp();
 
             //size check
-            if (org.Size != act.Size) throw new ImagesAreNotSameSizeException(org,act);
+            if (org.Size != act.Size) throw new ImagesAreNotSameSizeException(act,org);
             
             var orgData = org.LockBits(
                     new Rectangle( 0, 0, org.Width, org.Height ),

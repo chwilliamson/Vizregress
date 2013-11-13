@@ -11,8 +11,8 @@ namespace Vizregress.BDD.Examples.Tests
     public class ExpectedResourceResolverFixture
     {
         [Test]
-        [TestCase("foo.bar", Browsers.FireFox22, null, "Vizregress.BDD.Examples.Images.foo.FireFox22.bar.png", TestName = "No Locale")]
-        [TestCase("foo.bar", Browsers.FireFox22, "en-GB", "Vizregress.BDD.Examples.Images.foo.FireFox22.bar.en-gb.png", TestName = "en-GB")]      
+        [TestCase("foo.bar", Browsers.Phantomjs, null, "Vizregress.BDD.Examples.Images.foo.Phantomjs.bar.png", TestName = "No Locale")]
+        [TestCase("foo.bar", Browsers.Phantomjs, "en-GB", "Vizregress.BDD.Examples.Images.foo.Phantomjs.bar.en-gb.png", TestName = "en-GB")]      
         public void ResourceResolveBasic(string name, Browsers browser, string ietf, string expectedResource) 
         {            
             var resolver = MockRepository.GenerateStrictMock<ExpectedResourceResolver>();
