@@ -13,7 +13,7 @@ namespace Vizregress
         /// </summary>
         /// <param name="bitmap"></param>
         /// <returns></returns>
-        public static Bitmap To24bpp(this Bitmap bitmap)
+        public static Bitmap To24Bpp(this Bitmap bitmap)
         {
             var bmp = new Bitmap(bitmap.Width, bitmap.Height, PixelFormat.Format24bppRgb);
             using (var gr = Graphics.FromImage(bmp))

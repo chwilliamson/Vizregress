@@ -1,5 +1,4 @@
 ﻿using TechTalk.SpecFlow;
-using Vizregress.Example.Web;
 
 namespace Vizregress.BDD.Examples.StepDefinitions
 {
@@ -27,25 +26,6 @@ namespace Vizregress.BDD.Examples.StepDefinitions
         public static void CloseDriver()
         {
             WebDriver.Close();
-        }
-
-        /// <summary>
-        /// Start-up the self host
-        /// </summary>
-        [BeforeFeature("SelfHost")]
-        public static void StartSelfHost() {
-            var app = new App();
-            app.Start();
-            FeatureContext.Current.Set(app);
-        }
-
-        /// <summary>
-        /// Shutdown SelfHost
-        /// </summary>
-        [AfterFeature("SelfHost")]
-        public static void StopSelfHost()
-        {
-            FeatureContext.Current.Get<App>().Stop();
         }
     }
 }

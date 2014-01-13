@@ -28,7 +28,7 @@ namespace Vizregress
 
         public static Rectangle GetBounds(Stream image, string color = "#FF0000")
         {
-            var org = new Bitmap(image).To24bpp();
+            var org = new Bitmap(image).To24Bpp();
             return GetBounds(org);
         }
 

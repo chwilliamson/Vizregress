@@ -19,8 +19,8 @@ namespace Vizregress.Zone
         /// <returns></returns>
         public Stream ExtractZone(Stream imageWithoutZone, Stream imageWithZone)
         {
-            var org = new Bitmap(imageWithZone).To24bpp();
-            var act = new Bitmap(imageWithoutZone).To24bpp();
+            var org = new Bitmap(imageWithZone).To24Bpp();
+            var act = new Bitmap(imageWithoutZone).To24Bpp();
 
             //size check
             if (org.Size != act.Size) throw new ImagesAreNotSameSizeException(org, act);
@@ -42,6 +42,5 @@ namespace Vizregress.Zone
             target.Save(s,ImageFormat.Png);
             return s;
         }
-        
     }
 }

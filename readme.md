@@ -1,15 +1,13 @@
-#Visual Regression (Vizregress)
-Spot visual regression in your web application by comparing screenshots against an approved set of screenshots.
+#Visual Regression Testing (Vizregress)
+Spot visual regression in your web application by comparing screen-shots against an approved set of screen-shots.
 
-This is my project where I use TDD (Test Driven Development) to develop units of code and behaviours when writing tests.  
-You'll see that *Vizregress.Tests* performs tests against *Vizregress*.
+This is my research project where I use TDD (Test Driven Development) to support visual regression testing.
 
-I use [SpecFlow](http://www.specflow.org/) as my BDD (Behaviour Driven Development) tool to perform browser based tests. 
-For me BDD sits strongly within the QA domain and maps nicely when documenting features and scenarios.
+I use [SpecFlow](http://www.specflow.org/) as my BDD (Behavior Driven Development) tool to perform browser based tests. 
 
 ##About
 ###Background experience
-From experience I have used the Selenium WebDriver to run Chrome and FireFox browser automation tests identifies regression.  
+I have used the Selenium WebDriver to run Chrome and FireFox browser automation tests to identify regression.  
 
 The integration tests are executed on Jenkins which we use as our Continuous Delivery platform.  
 After successful integration tests a staging release is made which is reviewed by the QA team.
@@ -17,7 +15,7 @@ After successful integration tests a staging release is made which is reviewed b
 ###The Problem
 One thing that we kept missing in terms of regression was spotting visual elements that change.  
 A simple CSS change can be catastrophic for another view/page that has some Css hacks.
-The Selenium WebDriver will continue to perform and run tests despite the page looking visually incorrect.
+The Selenium WebDriver will continue to perform and run tests despite the page looking visually incorrect because the css selectors will remain the same.
 
 This is a research project using [AForge.Net Framework](http://code.google.com/p/aforge/). 
 The idea to a create a set of expected images for different parts of an application that can be compared in a test.
@@ -34,8 +32,18 @@ This could be to excluded zones that are locale specific or contain dynamic text
 
 The RGB region is configurable defaulting to FFFFD800.
 
-e.g. The zone below (yellow rectangle at top) ignores the github statistics bar. 
+####Examples 
+
+#####Github Stats
+The zone below (yellow rectangle at top) ignores the github statistics bar. 
 ![](https://raw.github.com/cwilliamson1980/Vizregress/master/Vizregress.Tests/Images/Github.Home.IgnoreSections.png?raw=true)
+
+#####Stockport Kitchens Carousel
+The zone below (yellow rectangle at top) ignores the Stockport Kitchens carousel.
+![](https://raw.github.com/cwilliamson1980/Vizregress/master/Vizregress.BDD.Examples/Images/StockportKitchens/Phantomjs/Home.png?raw=true)
+
+The carousel formed an interesting problem. It transitions between a set a of images and the transition has fade effect.  
+The easiest option was to exclude this section but it does pose an interesting challenge: How do we test that the carousel images are correct?  It needs to be more predictable?
 
 ###Match Regions and Zones
 
@@ -66,6 +74,7 @@ You'll have to take this into consideration when designing your automation platf
 * Browser size must be constant
 * Browser version must be consistent
  * The images will need to be stored independently across versions
+* Consistent operating system.
 
 You could solve this by allowing your developers to provision VM's that are used by your build environment.
 
@@ -74,11 +83,13 @@ Contains tests for *Vizregress.Tests* using NUnit.
 
 ##Vizregress.BDD.Examples
 Contains example Selenium tests using the WebDriver to assert DOM properties.  
-It takes screenshots and compares them to some expected embedded resources.
+It takes screen-shots and compares them to some expected embedded resources.
 
 I have used SpecFlow to create features so you'll need to download the SpecFlow with NUnit extension to run them.
 
-Take this project and modify, make your own and grow :)  It's meant to be your starting point; or an example of how to use Vizregress.
+Take this project and modify, make your own and grow :)  I have used to create some tests against http://www.stockport-kitchens.co.uk.
+
+It's meant to be your starting point; or an example of how to use Vizregress.
 
 ###Image naming conventions
 Images are currently stored as embedded resources at *Vizregress.BDD.Images* and structured using the following naming convention:
@@ -93,7 +104,7 @@ Example
 * Example
  * PhantomJS
      * Home.png
-     * SelfHost.png
+     * Contact.png
 
 If a page variant Page.en-US.png isn't found then it'll fall back to Page.png.
 
@@ -109,21 +120,11 @@ Difference:foo.difference.png
 *foo.difference.png* will give you an idea of which zones to check.
 You could try inverting the image to see if it's clearer to find the difference.
 
-##Vizregress.BDD.Examples.Tests
-Contains tests for *Vizregress.BDD.Examples* using NUnit
+##Challenges
 
-##Vizregress.Example.Web
-A SelfHosted web example required by the selenium tests in Vizregress.Tests.  
-It's an ASP.NET Web API SelfHost and I added a custom MessageHandler to serve embedded content for testing purposes.
+###Pages must be predictable
+I found that components such as a carousel and Facebook/Twitter feeds can cause unpredictability leading to more sections being excluded.
 
-The following frameworks are used:
+###Consistent Platform
 
-* ASP.NET Web API
-* Knockoutjs
-* jQuery
-* jQueryUI
-
-## Problems
-
-*System.ServiceModel.AddressAccessDeniedException : HTTP could not register URL http://+:8087/. Your process does not have access rights to this namespace (see http://go.microsoft.com/fwlink/?LinkId=70353 for details).*
-Run Visual Studio as an administrator.
+It's important that a consistent platform is used. I found that using Plantomjs with the same OS on different computers can still have anti-aliasing differences.

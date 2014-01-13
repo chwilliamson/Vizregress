@@ -61,7 +61,7 @@ namespace Vizregress
         /// <returns></returns>
         public bool IsEqual(Stream expected, Stream actual)
         {
-            return this.IsEqual(expected,actual,null);
+            return IsEqual(expected,actual,null);
         }
         /// <summary>
         /// Determines if two images are the same
@@ -72,41 +72,20 @@ namespace Vizregress
         /// <returns></returns>
         public bool IsEqual(Stream expected, Stream actual, Action<Bitmap> differenceImage)
         {
-            // create template matching algorithm's instance
-            // use zero similarity to make sure algorithm will provide anything
-            var tm = new ExhaustiveTemplateMatching(0);
             // convert to 24 bit
-            var org = new Bitmap(expected).To24bpp();
-            var act = new Bitmap(actual).To24bpp();
-
+            var org = new Bitmap(expected).To24Bpp();
+            var act = new Bitmap(actual).To24Bpp();
             //size check
             if (org.Size != act.Size) throw new ImagesAreNotSameSizeException(act,org);
             
-            var orgData = org.LockBits(
-                    new Rectangle( 0, 0, org.Width, org.Height ),
-                    ImageLockMode.ReadWrite, org.PixelFormat );
-            var actData = act.LockBits(
-                   new Rectangle(0, 0, act.Width, act.Height),
-                   ImageLockMode.ReadWrite, act.PixelFormat);
-            try
+            var tm = new ExhaustiveTemplateMatching(0);
+            var matchings = tm.ProcessImage(org, act);
+            // check similarity level; if one pixel out; fail!
+            if (matchings.Length==1 && matchings[0].Similarity == 1.0f)
             {
-                var matchings = tm.ProcessImage(new UnmanagedImage(orgData), new UnmanagedImage(actData));
-                // check similarity level; if one pixel out; fail!
-                if (matchings[0].Similarity == 1.0f)
-                {
-                    return true;
-                }             
+                return true;
             }
-            catch
-            {
-                return false;
-            }
-            finally
-            {
-                org.UnlockBits(orgData);
-                act.UnlockBits(actData);
-            }
-
+            
             return IsDifferenceTheEscapingColor(org,act,differenceImage);
         }
         

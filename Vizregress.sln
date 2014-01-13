@@ -1,6 +1,8 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 2012
+# Visual Studio 2013
+VisualStudioVersion = 12.0.21005.1
+MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Vizregress.Tests", "Vizregress.Tests\Vizregress.Tests.csproj", "{7D55024E-8490-4590-BE05-CC2206424CB2}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Vizregress.BDD.Examples", "Vizregress.BDD.Examples\Vizregress.BDD.Examples.csproj", "{7BFAEE49-3300-439E-8970-2EBC90DDA434}"
@@ -11,8 +13,6 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 	ProjectSection(SolutionItems) = preProject
 		readme.md = readme.md
 	EndProjectSection
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Vizregress.Example.Web", "Vizregress.Example.Web\Vizregress.Example.Web.csproj", "{93B626C5-5FB9-46AC-8C18-44BBF0069557}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".nuget", ".nuget", "{5D903EB7-3DBE-4F3E-B808-9657A0D2B31F}"
 	ProjectSection(SolutionItems) = preProject
@@ -40,10 +40,6 @@ Global
 		{AD9CC508-37F3-4365-B635-25EE81F82D0F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{AD9CC508-37F3-4365-B635-25EE81F82D0F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{AD9CC508-37F3-4365-B635-25EE81F82D0F}.Release|Any CPU.Build.0 = Release|Any CPU
-		{93B626C5-5FB9-46AC-8C18-44BBF0069557}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{93B626C5-5FB9-46AC-8C18-44BBF0069557}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{93B626C5-5FB9-46AC-8C18-44BBF0069557}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{93B626C5-5FB9-46AC-8C18-44BBF0069557}.Release|Any CPU.Build.0 = Release|Any CPU
 		{4F54ED79-1ACA-4877-A136-8864D46DBB3F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{4F54ED79-1ACA-4877-A136-8864D46DBB3F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4F54ED79-1ACA-4877-A136-8864D46DBB3F}.Release|Any CPU.ActiveCfg = Release|Any CPU

@@ -6,7 +6,7 @@ namespace Vizregress.Tests
     /// My fixture
     /// </summary>
     [TestFixture]
-    public class ImageComparerFixture
+    public class ImageComparerTests
     {
         
         /// <summary>
@@ -22,7 +22,9 @@ namespace Vizregress.Tests
         [TestCase("Github.Home.IgnoreSections", "Github.Home.LineThroughStats", true, TestName = "Github same with change in an 'ignored' section")]
         [TestCase("Github.Home.IgnoreSections", "Github.Home.LineThroughNoneIgnoredSection", false, TestName = "Github same with change not in 'ignored' section")]
         [TestCase("Github.Home.IgnoreSections", "Github.Home.IgnoreSections", true, TestName = "Lines Through")]
-        [TestCase("Github.Home", "Github.TooSmall", false, TestName = "Images not same size", ExpectedException = typeof(ImagesAreNotSameSizeException))]        
+        [TestCase("Github.Home", "Github.TooSmall", false, TestName = "Images not same size", ExpectedException = typeof(ImagesAreNotSameSizeException))]
+        [TestCase("SK.Home", "SK.Home", true, TestName = "Same Images Again")]
+        [TestCase("SK.Home", "SK.Home.Line", false, TestName = "Line through it")]
         public void IsEqual(string src1, string src2, bool equal)
         {
             using (var s1 = Utils.Load(src1))

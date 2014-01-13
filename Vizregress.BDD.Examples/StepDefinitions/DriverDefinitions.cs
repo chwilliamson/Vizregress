@@ -1,7 +1,8 @@
 ﻿using System;
 using NUnit.Framework;
+using OpenQA.Selenium;
+using OpenQA.Selenium.Support.UI;
 using TechTalk.SpecFlow;
-using Vizregress.Example.Web;
 
 namespace Vizregress.BDD.Examples.StepDefinitions
 {
@@ -12,16 +13,13 @@ namespace Vizregress.BDD.Examples.StepDefinitions
     public class DriverDefinitions : AbstractStepDefinitions
     {
         [Given(@"I visit (.*)")]
-        public void GivenIVisit(string name)
+        public void GivenIVisit(string url)
         {
-            var url = "https://github.com/";
-            if (name.Equals("Example", StringComparison.OrdinalIgnoreCase))
-            {
-                url = FeatureContext.Current.Get<App>().Uri + "/";
-            }
             WebDriver.
                 Navigate().
                 GoToUrl(url);
+            //ensure everything is loaded
+            new WebDriverWait(WebDriver, TimeSpan.FromSeconds(30)).Until(d=>((IJavaScriptExecutor)d).ExecuteScript("return document.readyState;").Equals("complete"));
         }
 
         [Then("the page title should be (.*)")]

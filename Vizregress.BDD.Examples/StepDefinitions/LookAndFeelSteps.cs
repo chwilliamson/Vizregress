@@ -2,7 +2,6 @@
 using System.Drawing;
 using System.Drawing.Imaging;
 using System.IO;
-using System.Threading;
 using NUnit.Framework;
 using OpenQA.Selenium;
 using TechTalk.SpecFlow;
@@ -20,14 +19,15 @@ namespace Vizregress.BDD.Examples.StepDefinitions
         /// <see cref="Vizregress.BDD.Examples.Images"/>
         /// </summary>
         /// <param name="name"></param>
-        [Then(@"the screen should look like (.*)")]
+        [Then(@"the page should look like (.*).png")]
         public void LooksLike(string name)
         {
             var driver = WebDriver;
-            if (driver is ITakesScreenshot)
+            var screenshotDriver = driver as ITakesScreenshot;
+            if (screenshotDriver != null)
             {
-                var s = ((ITakesScreenshot)driver).GetScreenshot();
-                var actualOutput = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, name + ".actual.png");
+                var s = screenshotDriver.GetScreenshot();
+                var actualOutput = Path.Combine(AppDomain.CurrentDomain.BaseDirectory,name.Replace("/",".") + ".actual.png");
                 var expectedOutput = actualOutput.Replace("actual", "expected");
                 var differenceOutput = actualOutput.Replace("actual", "difference");
                 
@@ -44,14 +44,13 @@ namespace Vizregress.BDD.Examples.StepDefinitions
                     new Bitmap(streamExpected).Save(expectedOutput);
 
                     //now compare current with base
-                    Assert.IsTrue(new ImageComparer().IsEqual(streamExpected, streamActual, (bm) => bm.Save(differenceOutput)), 
+                    Assert.IsTrue(new ImageComparer().IsEqual(streamExpected, streamActual, bm => bm.Save(differenceOutput)), 
                     string.Format("Expected Image: {0}{3}But was: {1}{3}Difference: {2}", actualOutput,expectedOutput,differenceOutput, Environment.NewLine));
                 }
-
             }
             else
             {
-                Assert.Fail("The driver doesn't allow screenshots");
+                Assert.Fail("The driver doesn't allow screen-shots");
             }
         }
     }
