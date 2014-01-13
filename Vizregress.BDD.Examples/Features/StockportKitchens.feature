@@ -22,3 +22,8 @@ Scenario: Contact page has correct title
 Scenario: Contact form looks correct
 	Given I visit http://www.stockport-kitchens.co.uk/contact
 	Then the page should look like StockportKitchens/Contact.png
+
+Scenario: Clicking twitter opens new window and goes to twitter page
+	Given I visit http://www.stockport-kitchens.co.uk
+	When I click the Twitter button
+	Then a new window should open with url https://twitter.com/richardskbb

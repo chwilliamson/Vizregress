@@ -26,6 +26,7 @@ namespace Vizregress.BDD.Examples.StepDefinitions
         public static void CloseDriver()
         {
             WebDriver.Close();
+            WebDriver.Dispose();
         }
     }
 }
