@@ -128,3 +128,5 @@ I found that components such as a carousel and Facebook/Twitter feeds can cause 
 ###Consistent Platform
 
 It's important that a consistent platform is used. I found that using Plantomjs with the same OS on different computers can still have anti-aliasing differences.
+
+[![Build status](https://ci.appveyor.com/api/projects/status?id=l721dwf09qd7vs70)](https://ci.appveyor.com/project/vizregress)
