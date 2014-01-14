@@ -60,11 +60,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ExpectedResourceResolver.cs" />
-    <Compile Include="Features\StockportKitchens.feature.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>StockportKitchens.feature</DependentUpon>
-    </Compile>
     <Compile Include="Maps\stockport-kitchens.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -82,10 +77,7 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
-    <None Include="Features\StockportKitchens.feature">
-      <Generator>SpecFlowSingleFileGenerator</Generator>
-      <LastGenOutput>StockportKitchens.feature.cs</LastGenOutput>
-    </None>
+    <None Include="Features\**\*.feature"/>
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
@@ -109,7 +101,13 @@
       <LastGenOutput>stockport-kitchens.Designer.cs</LastGenOutput>
     </EmbeddedResource>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <!-- include the generated test classes -->
+    <Compile Include="Features\**\*.cs">
+      <Visible>false</Visible>
+      <!-- the generated files can be hidden in Visual Studio -->
+    </Compile>
+  </ItemGroup>
   <ItemGroup>
     <Service Include="{82A7F48D-3B50-4B1E-B82E-3ADA8210C358}" />
   </ItemGroup>
